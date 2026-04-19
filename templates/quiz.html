@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz Question {{ question_num }}</h1>
+    <p>This is a quiz question.</p>
+
+    <form action="/results">
+        <input type="radio" name="answer" value="A"> A<br>
+        <input type="radio" name="answer" value="B"> B<br>
+        <input type="radio" name="answer" value="C"> C<br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
