@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Learn</title>
+</head>
+<body>
+    <h1>Lesson {{ lesson_num }}</h1>
+    <p>This is the learning page.</p>
+
+    <a href="/learn/{{ lesson_num + 1 }}">
+        <button>Next Lesson</button>
+    </a>
+
+    <a href="/quiz/1">
+        <button>Go to Quiz</button>
+    </a>
+</body>
+</html>
