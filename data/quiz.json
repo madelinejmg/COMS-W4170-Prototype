@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "type": "mcq",
+    "question": "How many sets (Pongs/Kongs/Chows) does a standard Taiwanese Mahjong winning hand require, plus how many pairs?",
+    "options": ["4 sets + 1 pair", "5 sets + 1 pair", "5 sets + 2 pairs", "3 sets + 1 pair"],
+    "answer": 1,
+    "explanation": "Taiwanese Mahjong requires 5 sets + 1 pair. This is different from other regional variants that may use 4 sets."
+  },
+  {
+    "id": 2,
+    "type": "tile_id",
+    "question": "What meld do these three tiles form?",
+    "tiles": [
+      {"symbol": "🀗", "suit": "cir"},
+      {"symbol": "🀗", "suit": "cir"},
+      {"symbol": "🀗", "suit": "cir"}
+    ],
+    "options": ["Chow", "Pong", "Kong", "Eyes"],
+    "answer": 1,
+    "explanation": "Three identical tiles = Pong. A Chow needs three consecutive numbers; a Kong needs four identical tiles."
+  },
+  {
+    "id": 3,
+    "type": "tile_id",
+    "question": "What meld do these three tiles form?",
+    "tiles": [
+      {"symbol": "🀒", "suit": "chr"},
+      {"symbol": "🀓", "suit": "chr"},
+      {"symbol": "🀔", "suit": "chr"}
+    ],
+    "options": ["Pong", "Chow", "Kong", "Flower Bonus"],
+    "answer": 1,
+    "explanation": "Three consecutive tiles of the same suit = Chow. 3-4-5 Characters is a valid sequence."
+  },
+  {
+    "id": 4,
+    "type": "mcq",
+    "question": "Can you form a Chow with Wind tiles?",
+    "options": ["Yes, if they are in order East-South-West", "No, Winds can only form Pongs or Kongs", "Yes, but only with matching seat winds", "Only if all four winds are used"],
+    "answer": 1,
+    "explanation": "Wind and Dragon tiles cannot form Chow sequences — only Pongs and Kongs."
+  },
+  {
+    "id": 5,
+    "type": "mcq",
+    "question": "Your winning hand has All Triplets + Self-Draw + Concealed Hand. How many Tai total?",
+    "options": ["4 Tai", "5 Tai", "6 Tai", "7 Tai"],
+    "answer": 2,
+    "explanation": "All Triplets (+4) + Self-Draw (+1) + Concealed Hand (+1) = 6 Tai. These three bonuses all stack together."
+  },
+  {
+    "id": 6,
+    "type": "mcq",
+    "question": "Which hand earns more Tai?",
+    "options": ["Full Flush — one suit only, no honor tiles", "Mixed Flush — one suit plus honor tiles", "They earn the same Tai", "Neither earns any Tai"],
+    "answer": 0,
+    "explanation": "Full Flush earns +4 Tai, while Mixed Flush earns only +2 Tai. Pure one-suit hands are worth double!"
+  },
+  {
+    "id": 7,
+    "type": "mcq",
+    "question": "You won by claiming a discard from another player, and your hand contains a Chow. Which bonus applies?",
+    "options": ["Concealed Hand", "Self-Draw", "Neither bonus applies", "Both bonuses apply"],
+    "answer": 2,
+    "explanation": "Concealed Hand requires no claimed tiles at all. Self-Draw requires drawing the winning tile yourself. Claiming a discard with a Chow earns neither bonus."
+  }
+]

@@ -1,13 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Results</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Results Page</h1>
-    <p>Your quiz is complete.</p>
-    <a href="/">
-        <button>Back Home</button>
-    </a>
+
+<!---->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4">
+  <a class="navbar-brand fw-bold" href="/">🀄 Learn Mahjong</a>
+  <div class="ms-auto d-flex gap-2">
+    <a href="/" class="btn btn-sm btn-outline-secondary">Home</a>
+    <a href="/learn/1" class="btn btn-sm btn-outline-secondary">Learn</a>
+    <a href="/resume" class="btn btn-sm btn-outline-secondary">Quiz</a>
+    <a href="/results" class="btn btn-sm btn-outline-secondary active">Results</a>
+  </div>
+</nav>
+
+<main class="container py-5" style="max-width:700px">
+
+  <div class="text-center mb-5">
+    <div style="font-size:72px;font-weight:700;color:#3d5c47;line-height:1">
+      {{ score }}<span style="font-size:28px;opacity:0.4">/{{ total }}</span>
+    </div>
+    <p class="text-muted mb-3">questions correct ({{ percent }}%)</p>
+
+    {% if percent == 100 %}
+      <p class="fs-5 fst-italic" style="color:#3d5c47">Perfect score!</p>
+    {% elif percent >= 70 %}
+      <p class="fs-5 fst-italic" style="color:#3d5c47">Great job!</p>
+    {% elif percent >= 50 %}
+      <p class="fs-5 fst-italic" style="color:#5a5248">Good effort!</p>
+    {% else %}
+      <p class="fs-5 fst-italic" style="color:#5a5248">Keep studying!</p>
+    {% endif %}
+
+    <div class="d-flex gap-3 justify-content-center mt-4 flex-wrap">
+      {% if answered < total %}
+      <a href="/resume" class="btn btn-success px-4">Continue Quiz →</a>
+      {% endif %}
+      <a href="/start" class="btn btn-success px-4">Start Over</a>
+      <a href="/" class="btn btn-outline-secondary px-4">Back to Home</a>
+    </div>
+  </div>
+
+  <h5 class="mb-3" style="color:#3d5c47">Answer Review</h5>
+  {% for r in results %}
+  <div class="review-row {{ 'review-correct' if r.is_correct else 'review-wrong' }} mb-2">
+    <div class="d-flex gap-3 align-items-start">
+      <span class="review-icon">
+        {% if r.skipped %}—{% elif r.is_correct %}✓{% else %}✗{% endif %}
+      </span>
+      <div>
+        <p class="mb-1 fw-bold" style="font-size:14px;color:#2c2824">Q{{ loop.index }}. {{ r.question }}</p>
+        {% if r.skipped %}
+          <p class="mb-0" style="font-size:13px;color:#9a9088;font-style:italic">Not answered yet</p>
+        {% else %}
+          <p class="mb-0" style="font-size:13px;color:#5a5248">{{ r.explanation }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+</main>
+
+<style>
+.review-row {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #e8dfd0;
+  border-left-width: 4px;
+  background: #fff;
+}
+.review-correct { 
+  border-left-color: #5a9e65 !important; 
+}
+.review-wrong   { 
+  border-left-color: #c47a74 !important; 
+}
+.review-icon { 
+  font-size: 18px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+.review-correct .review-icon { 
+  color: #2d6b38; 
+}
+.review-wrong   .review-icon { 
+  color: #8c3030; 
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
