@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "title": "About Taiwanese Mahjong",
+    "content": "Taiwanese Mahjong is a fast-paced, social tile game played by four players that combines strategy, memory, and a bit of luck. Each player starts with 16 tiles and takes turns drawing and discarding to form a winning hand made of sets and a pair."
+  },
+  {
+    "id": 2,
+    "title": "Tile Types Overview",
+    "content": "There are 6 types of tiles in Taiwanese Mahjong:",
+    "details": [
+      "Bamboo — 9 tiles (1-9), x4 each = 36 total",
+      "Circles — 9 tiles (1-9), x4 each = 36 total",
+      "Characters — 9 tiles (1-9), x4 each = 36 total (represent ten thousands)",
+      "Winds — 4 tiles (East/South/West/North), x4 each = 16 total. Cannot form Chows — only Pongs and Kongs.",
+      "Dragons — 3 tiles (Red/Green/White), x4 each = 12 total. Cannot form Chows — only Pongs and Kongs.",
+      "Flowers & Seasons — 4 Flower + 4 Season tiles, each appears once = 8 total. When drawn, reveal immediately and draw a replacement."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Forming Melds",
+    "content": "Melds are the sets you need to build a winning hand. There are 4 types:",
+    "details": [
+      "Pong — A set of 3 identical tiles (triplet). Most common way to form a meld.",
+      "Kong — A set of 4 identical tiles. Largest possible meld of identical tiles.",
+      "Chow — A sequence of 3 consecutive tiles of the same suit (e.g., 4-5-6 Bamboo). Numbers must be in order. You can only Chow from the player directly ahead of you.",
+      "Eyes — A pair of 2 identical tiles. Every winning hand needs one pair."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "How to Win (Hu)",
+    "content": "A basic winning hand consists of 5 melds (Pong, Kong, or Chow) plus 1 pair of identical tiles (Eyes). This is called 'Hu'.",
+    "details": [
+      "You need exactly 5 melds + 1 pair to win.",
+      "Each meld can be any combination of Pongs, Kongs, or Chows.",
+      "If you are one tile away from completing your winning hand, you are in a 'Ready Hand'."
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Scoring: Bonus Points (Tai)",
+    "content": "In Taiwanese Mahjong, winning hands earn bonus points called Tai. The more Tai you have, the more you win!",
+    "details": [
+      "All Triplets (+4 Tai) — A winning hand made entirely of Pongs and Kongs, no Chows allowed.",
+      "Full Flush (+4 Tai) — A winning hand using only one suit (Bamboo, Circle, or Character), no Honor tiles.",
+      "Concealed Hand (+1 Tai) — You win without claiming any discarded tiles. All melds formed by drawing tiles yourself.",
+      "Self-Draw (+1 Tai) — You draw the winning tile yourself from the wall instead of claiming a discard. All three other players pay you!"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Review: Tiles & Melds",
+    "is_review": true,
+    "content": "Let's review what you've learned before the practice section.",
+    "sections": [
+      {
+        "heading": "Tile Types",
+        "points": [
+          "Bamboo, Circles, Characters — 9 each, x4 = 36 per suit",
+          "Winds (E/S/W/N) — x4 each = 16. No Chows, only Pongs & Kongs.",
+          "Dragons (Red/Green/White) — x4 each = 12. No Chows, only Pongs & Kongs.",
+          "Flowers/Seasons — 8 total, each x1. Reveal & draw replacement."
+        ]
+      },
+      {
+        "heading": "Melds",
+        "points": [
+          "Pong = 3 identical tiles",
+          "Kong = 4 identical tiles",
+          "Chow = 3 consecutive tiles, same suit (only from player ahead)",
+          "Eyes = 2 identical tiles (pair)"
+        ]
+      },
+      {
+        "heading": "Winning & Scoring",
+        "points": [
+          "Win (Hu) = 5 melds + 1 pair (Eyes)",
+          "Ready Hand = one tile away from winning",
+          "All Triplets = +4 Tai | Full Flush = +4 Tai",
+          "Concealed Hand = +1 Tai | Self-Draw = +1 Tai"
+        ]
+      }
+    ]
+  }
+]
