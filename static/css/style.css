@@ -1,0 +1,12 @@
+/* Minimal styles - HW11 will focus on design */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
