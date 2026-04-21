@@ -52,19 +52,12 @@ def home():
 
 @app.route('/start')
 def start():
-    user_data = get_user_data()
-
-    # If a user already started but has not finished, resume progress
-    if user_data["started_at"] is not None and user_data.get("finished_at") is None:
-        return redirect(url_for('resume'))
-
     # Start a fresh session
     user_data = get_default_user_data()
     user_data["started_at"] = datetime.now().isoformat()
     save_user_data(user_data)
 
     return redirect(url_for('learn', lesson_num=1))
-
 
 @app.route('/learn/<int:lesson_num>')
 def learn(lesson_num):
