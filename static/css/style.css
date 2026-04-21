@@ -1,0 +1,32 @@
+/* Results Page Review Cards */
+
+.review-row {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #e8dfd0;
+  border-left-width: 4px;
+  background: #fff;
+}
+
+.review-correct {
+  border-left-color: #5a9e65 !important;
+}
+
+.review-wrong {
+  border-left-color: #c47a74 !important;
+}
+
+.review-icon {
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.review-correct .review-icon {
+  color: #2d6b38;
+}
+
+.review-wrong .review-icon {
+  color: #8c3030;
+}
