@@ -57,25 +57,9 @@
   </div>
 
   <div class="feedback-box {% if is_correct %}feedback-correct{% else %}feedback-wrong{% endif %} mb-4">
-
-    {% if is_correct %}
-      <strong>Great job!</strong>
-    {% else %}
-      <strong>Almost there!</strong>
-    {% endif %}
-
-    <p class="mt-2 mb-3">
-      {{ question.explanation }}
-    </p>
-
-    {% if not is_correct %}
-      <div class="mt-2">
-        <a href="/learn/{{ review_lesson }}" class="btn btn-outline-secondary review-btn">
-          Review Lesson
-        </a>
-      </div>
-    {% endif %}
-
+    {% if is_correct %}<strong>Correct!</strong>{% else %}<strong>Not quite.</strong>{% endif %}
+    {{ question.explanation }}
+    {% if not is_correct %}<a href="/learn/{{ review_lesson }}" class="btn btn-outline-secondary me-2"><strong>Review Lesson</strong></a>{% endif %}
   </div>
 
   {% if question_num < total %}
