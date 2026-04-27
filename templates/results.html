@@ -4,43 +4,31 @@
 {% block content %}
 
 <div class="text-center mb-5">
-  <div style="font-size:72px; font-weight:700; color:#3d5c47; line-height:1">
+  <div style="font-size:72px; font-weight:700; color:#3d6b52; line-height:1">
     {{ score }}<span style="font-size:28px; opacity:0.4">/{{ total }}</span>
   </div>
   <p class="text-muted mb-3">questions correct</p>
 
-  {% if minutes_spent is not none %}
-    <p class="text-muted">Completed in {{ minutes_spent }} minutes</p>
-  {% endif %}
-
-  <div class="progress mt-3 mb-4" style="height: 20px;">
-    <div class="progress-bar bg-success"
-         role="progressbar"
-         style="width: {{ (score / total * 100)|int }}%;">
-      {{ (score / total * 100)|int }}%
-    </div>
-  </div>
-
   {% if score == total %}
-    <p class="fs-5 fst-italic" style="color:#3d5c47">Perfect score!</p>
+    <p class="fs-5 fst-italic" style="color:#3d6b52">Perfect score!</p>
   {% elif score >= total * 0.7 %}
-    <p class="fs-5 fst-italic" style="color:#3d5c47">Great job!</p>
+    <p class="fs-5 fst-italic" style="color:#3d6b52">Great job!</p>
   {% elif score >= total * 0.5 %}
     <p class="fs-5 fst-italic" style="color:#5a5248">Good effort!</p>
   {% else %}
-    <p class="fs-5 fst-italic" style="color:#5a5248">Keep studying and try again!</p>
+    <p class="fs-5 fst-italic" style="color:#5a5248">Keep studying!</p>
   {% endif %}
 
   <div class="d-flex gap-3 justify-content-center mt-4 flex-wrap">
     {% if answered < total %}
-    <a href="/resume" class="btn btn-success px-4">Continue Quiz →</a>
+    <a href="/resume" class="btn btn-main px-4">Continue Quiz →</a>
     {% endif %}
-    <a href="/start" class="btn btn-success px-4">Start Over</a>
-    <a href="/" class="btn btn-outline-secondary px-4">Back to Home</a>
+    <a href="/start" class="btn btn-main px-4">Start Over</a>
+    <a href="/" class="btn btn-main px-4">Back to Home</a>
   </div>
 </div>
 
-<h5 class="mb-3" style="color:#3d5c47">Answer Review</h5>
+<h5 class="mb-3" style="color:#3d6b52">Answer Review</h5>
 {% for r in results %}
 <div class="review-row {{ 'review-correct' if r.is_correct else 'review-wrong' }} mb-2">
   <div class="d-flex gap-3 align-items-start">
