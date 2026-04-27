@@ -3,25 +3,73 @@
 
 {% block content %}
 
-<div class="progress mb-4" style="height:6px">
-  <div class="progress-bar bg-success" style="width:{{ ((question_num - 1) / total * 100)|int }}%"></div>
+<div class="mb-3">
+  <small class="text-muted text-uppercase fw-bold d-block mb-1" style="letter-spacing:1px">Question {{ question_num }} of {{ total }}</small>
+  <div class="progress" style="height:6px">
+    <div class="progress-bar" style="width:{{ (question_num / total * 100)|int }}%"></div>
+  </div>
 </div>
 
 <div class="card shadow-sm border-0 p-4">
-  <small class="text-muted text-uppercase fw-bold d-block mb-2" style="letter-spacing:1px">
-    Question {{ question_num }} of {{ total }}
-  </small>
-
-  <h4 class="mb-4" style="font-size:1.15rem; color:#3d5c47">{{ q.question }}</h4>
+  <h4 class="mb-4" style="font-size:1.15rem; color:#3d6b52">{{ q.question }}</h4>
 
   {% if q.type == 'tile_id' and q.tiles %}
-  <div class="d-flex gap-2 mb-4 p-3 rounded" style="background:#3d5c47">
+  <div class="tile-tray mb-4">
     {% for tile in q.tiles %}
-    <div class="tile-box">{{ tile.symbol }}</div>
+    <img src="{{ url_for('static', filename='img/tiles/' + tile.symbol + '.svg.png') }}" class="tile-img">
     {% endfor %}
   </div>
   {% endif %}
 
+  {% if q.type == 'tile_select' %}
+  <p class="text-muted mb-3" style="font-size:13px">{{ q.description }}</p>
+  <p class="mb-3" style="font-size:12px; color:#5a5248;">Hover to see tile name · Click the tile you want to discard</p>
+  <form method="POST" action="/quiz/{{ question_num }}">
+    <input type="hidden" name="submitted" value="{{ '1' if show_feedback else '0' }}">
+    <input type="hidden" name="answer" id="hidden-answer" value="{{ submitted_answer or '' }}">
+    <div class="mb-3" style="display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end;">
+      {% for i in range(q.tiles|length) %}
+      {% set tile = q.tiles[i] %}
+      {% set is_answer = (i == q.answer) %}
+      {% set is_submitted = (submitted_answer == i|string) %}
+      {% set is_drawn = tile.drawn is defined and tile.drawn %}
+      <div class="tile-wrap tile-selectable
+        {% if show_feedback and is_answer %}tile-correct
+        {% elif show_feedback and is_submitted and not is_answer %}tile-wrong
+        {% elif not show_feedback and is_submitted %}tile-picked
+        {% endif %}"
+        {% if not show_feedback %}onclick="selectTile(this, {{ i }})"{% endif %}>
+        {% if is_drawn %}
+        <span style="font-size:10px; font-weight:600; color:#3d6b52; margin-bottom:3px;">DRAWN</span>
+        {% endif %}
+        <img src="{{ url_for('static', filename='img/tiles/' + tile.symbol + '.svg.png') }}"
+             class="tile-img"
+             style="{% if is_drawn %}outline: 2px dashed #3d6b52; border-radius:4px;{% endif %}">
+        <div class="tile-tooltip">{{ tile.name }}</div>
+        {% if show_feedback and is_answer %}
+          <span class="tile-badge tile-badge-correct">✓</span>
+        {% elif show_feedback and is_submitted and not is_answer %}
+          <span class="tile-badge tile-badge-wrong">✗</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% if show_feedback %}
+    <div class="feedback-box {% if is_correct %}feedback-correct{% else %}feedback-wrong{% endif %} mb-4">
+      {% if is_correct %}<strong>Correct!</strong>{% else %}<strong>Not quite.</strong>{% endif %}
+      {{ q.explanation }}
+    </div>
+    <button type="submit" class="btn btn-main px-4">
+      {% if question_num < total %}Next →{% else %}See Results{% endif %}
+    </button>
+    {% else %}
+    <button type="submit" class="btn btn-main px-4 mt-2" id="submit-btn" {% if not submitted_answer %}disabled{% endif %}>
+      Discard Selected Tile
+    </button>
+    {% endif %}
+  </form>
+
+  {% else %}
   <form method="POST" action="/quiz/{{ question_num }}">
     <input type="hidden" name="submitted" value="{{ '1' if show_feedback else '0' }}">
     <input type="hidden" name="answer" id="hidden-answer" value="{{ submitted_answer or '' }}">
@@ -52,51 +100,26 @@
       {% if is_correct %}<strong>Correct!</strong>{% else %}<strong>Not quite.</strong>{% endif %}
       {{ q.explanation }}
     </div>
-    <button type="submit" class="btn btn-success px-4">
+    <button type="submit" class="btn btn-main px-4">
       {% if question_num < total %}Next →{% else %}See Results{% endif %}
     </button>
     {% else %}
-    <button type="submit" class="btn btn-success px-4" id="submit-btn" {% if not submitted_answer %}disabled{% endif %}>
+    <button type="submit" class="btn btn-main px-4" id="submit-btn" {% if not submitted_answer %}disabled{% endif %}>
       Check Answer
     </button>
     {% endif %}
 
   </form>
+  {% endif %}
 </div>
 
-<style>
-.tile-box {
-  width: 80px; height: 96px;
-  background: #fffcf8; border: 1px solid #d8cfc2; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 56px;
-  box-shadow: 2px 3px 0 rgba(0,0,0,0.15);
-}
-.opt-row {
-  display: flex; align-items: center; gap: 10px;
-  background: #f3ede3; border: 1.5px solid #e8dfd0;
-  border-radius: 9px; padding: 11px 14px;
-  font-size: 14px; cursor: pointer; user-select: none;
-  transition: background .15s, border-color .15s;
-}
-.opt-row:hover:not(.opt-correct):not(.opt-wrong):not(.opt-selected) {
-  border-color: #7fa88c; background: #eaf2ec;
-}
-.opt-selected { border-color: #5a7c65 !important; background: #eaf2ec !important; font-weight: 600; }
-.opt-correct  { background: #edf7ee !important; border-color: #5a9e65 !important; color: #2d6b38; font-weight: 600; }
-.opt-wrong    { background: #fdf0ee !important; border-color: #c47a74 !important; color: #8c3030; }
-.opt-letter {
-  width: 24px; height: 24px; border-radius: 50%;
-  background: #e8dfd0; display: flex; align-items: center;
-  justify-content: center; font-size: 11px; font-weight: 700;
-  flex-shrink: 0; color: #3d5c47;
-}
-.feedback-box { padding: 14px 18px; border-radius: 10px; font-size: 14px; line-height: 1.65; }
-.feedback-correct { background: #edf7ee; border-left: 4px solid #5a9e65; color: #2d6b38; }
-.feedback-wrong   { background: #fdf0ee; border-left: 4px solid #c47a74; color: #8c3030; }
-</style>
-
 <script>
+function selectTile(el, index) {
+  document.querySelectorAll('.tile-selectable').forEach(t => t.classList.remove('tile-picked'));
+  el.classList.add('tile-picked');
+  document.getElementById('hidden-answer').value = index;
+  document.getElementById('submit-btn').disabled = false;
+}
 function selectOption(el, index) {
   document.querySelectorAll('.opt-row').forEach(r => r.classList.remove('opt-selected'));
   el.classList.add('opt-selected');

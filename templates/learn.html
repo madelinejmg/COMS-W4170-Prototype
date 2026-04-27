@@ -4,15 +4,71 @@
 {% block content %}
 
 <div class="mb-3">
-  <small class="text-muted">Lesson {{ lesson_num }} of {{ total_lessons }}</small>
+  {% if lesson.is_review is defined and lesson.is_review %}
+  <small class="text-muted">Review</small>
+  {% else %}
+  <small class="text-muted">Lesson {{ lesson_num }} of {{ total_lessons - 1 }}</small>
+  {% endif %}
   <div class="progress mt-1" style="height:6px">
-    <div class="progress-bar bg-success" style="width:{{ (lesson_num / total_lessons * 100)|int }}%"></div>
+    <div class="progress-bar" style="width:{{ (lesson_num / total_lessons * 100)|int }}%"></div>
   </div>
 </div>
 
 <div class="card shadow-sm border-0 p-4">
-  <h4 class="fw-bold mb-3" style="color:#3d5c47">{{ lesson.title }}</h4>
+  <h4 class="fw-bold mb-3" style="color:#3d6b52">{{ lesson.title }}</h4>
   <p class="text-muted" style="font-size:14px; line-height:1.75">{{ lesson.content }}</p>
+
+  {% if lesson.tile_groups is defined %}
+    {% for group in lesson.tile_groups %}
+    <div class="mt-4">
+      <p class="fw-semibold mb-2" style="font-size:13px; color:#3d6b52">{{ group.label }}</p>
+      <div class="tile-tray">
+        {% for tile in group.tiles %}
+        <div class="tile-wrap">
+          <img src="{{ url_for('static', filename='img/tiles/' + tile.img + '.svg.png') }}" class="tile-img">
+          <div class="tile-tooltip">{{ tile.name }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if lesson.meld_groups is defined %}
+    {% for group in lesson.meld_groups %}
+    <div class="mt-4">
+      <p class="fw-semibold mb-2" style="font-size:13px; color:#3d6b52">{{ group.label }}</p>
+      <div class="tile-tray">
+        {% for tile in group.tiles %}
+        <div class="tile-wrap">
+          <img src="{{ url_for('static', filename='img/tiles/' + tile.img + '.svg.png') }}" class="tile-img">
+          <div class="tile-tooltip">{{ tile.name }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if lesson.winning_hands is defined %}
+    {% for hand in lesson.winning_hands %}
+    <div class="mt-4">
+      <p class="fw-semibold mb-2" style="font-size:13px; color:#3d6b52">{{ hand.label }}</p>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        {% for row in hand.rows %}
+        <div class="tile-tray">
+          {% for tile in row %}
+          <div class="tile-wrap">
+            <img src="{{ url_for('static', filename='img/tiles/' + tile.img + '.svg.png') }}" class="tile-img">
+            <div class="tile-tooltip">{{ tile.name }}</div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
 
   {% if lesson.details is defined %}
   <ul class="list-group list-group-flush mt-3">
@@ -25,7 +81,7 @@
   {% if lesson.sections is defined %}
     {% for section in lesson.sections %}
     <div class="mt-4">
-      <p class="fw-bold text-uppercase mb-2" style="font-size:12px; letter-spacing:1px; color:#3d5c47">{{ section.heading }}</p>
+      <p class="fw-bold text-uppercase mb-2" style="font-size:12px; letter-spacing:1px; color:#3d6b52">{{ section.heading }}</p>
       <ul class="list-group list-group-flush">
         {% for item in section.points %}
         <li class="list-group-item" style="font-size:14px">{{ item }}</li>
@@ -44,9 +100,9 @@
   {% endif %}
 
   {% if lesson_num < total_lessons %}
-  <a href="/learn/{{ lesson_num + 1 }}" class="btn btn-success">Next →</a>
+  <a href="/learn/{{ lesson_num + 1 }}" class="btn btn-main">Next →</a>
   {% else %}
-  <a href="/practice/1" class="btn btn-success">Start Practice →</a>
+  <a href="/practice/1" class="btn btn-main">Start Practice →</a>
   {% endif %}
 </div>
 

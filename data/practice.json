@@ -3,27 +3,30 @@
     "id": 1,
     "question": "What type of set is this?",
     "description": "Three identical Bamboo 7 tiles are shown.",
-    "tiles": ["🀕", "🀕", "🀕"],
+    "tiles": ["MJs7-","MJs7-","MJs7-"],
     "options": ["Chow", "Pong", "Kong"],
     "correct": 1,
-    "explanation": "This is a Pong — a set of 3 identical tiles. Not a Kong (which needs 4 identical tiles), and not a Chow (which needs 3 consecutive numbers)."
+    "explanation": "This is a Pong — a set of 3 identical tiles. Not a Kong (which needs 4 identical tiles), and not a Chow (which needs 3 consecutive numbers).",
+    "review_lesson": 3
   },
   {
     "id": 2,
-    "question": "How to win this hand?",
-    "description": "Your hand has 5 complete melds. You need one more tile to form a pair (Eyes). You already have one 1 Circle tile.",
-    "tiles": ["發","發","發","五萬","五萬","五萬","🀙","🀚","🀚","🀛","🀛","🀜","🀜","🀝","🀝","⭕"],
+    "question": "What tile completes the winning hand?",
+    "description": "Your hand has 5 complete melds. You need one more tile to form a pair (Eyes). You already have one 1-Circle tile.",
+    "tiles": ["MJd2-","MJd2-","MJd2-","MJw5-","MJw5-","MJw5-","MJt1-","MJt2-","MJt3-","MJt4-","MJt5-","MJt6-","MJt7-","MJt1-"],
     "options": ["6 Circles", "4 Circles", "1 Circle"],
     "correct": 2,
-    "explanation": "You already have 5 complete melds. To win (Hu), you just need a pair (Eyes). You have one 1 Circle tile, so adding another 1 Circle completes your Eyes and finishes the winning hand."
+    "explanation": "You already have 5 complete melds. To win (Hu), you just need a pair (Eyes). You have one 1-Circle tile, so adding another 1-Circle completes your Eyes and finishes the winning hand.",
+    "review_lesson": 4
   },
   {
     "id": 3,
     "question": "What's your best move?",
-    "description": "The player ahead of you played a 5 Character tile (五萬). You already have three 5 Character tiles in your hand.",
-    "tiles": ["五萬", "discarded"],
+    "description": "The player ahead of you discarded a 5-Character tile. You already have three 5-Character tiles in your hand.",
+    "tiles": ["MJw5-","MJw5-","MJw5-","MJw5-"],
     "options": ["Kong", "Pong", "Chow"],
     "correct": 0,
-    "explanation": "You already have three 5 Character tiles. Claiming the fourth makes a Kong (4 identical tiles). Not a Pong (you'd need exactly 3, but you already have 3 + the discard = 4). Not a Chow (that requires consecutive numbers)."
+    "explanation": "You already have three 5-Character tiles. Claiming the fourth makes a Kong (4 identical tiles). Not a Pong (you'd need exactly 3, but you already have 3 + the discard = 4). Not a Chow (that requires consecutive numbers).",
+    "review_lesson": 3
   }
 ]

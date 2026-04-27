@@ -8,34 +8,600 @@
     "id": 2,
     "title": "Tile Types Overview",
     "content": "There are 6 types of tiles in Taiwanese Mahjong:",
-    "details": [
-      "Bamboo — 9 tiles (1-9), x4 each = 36 total",
-      "Circles — 9 tiles (1-9), x4 each = 36 total",
-      "Characters — 9 tiles (1-9), x4 each = 36 total (represent ten thousands)",
-      "Winds — 4 tiles (East/South/West/North), x4 each = 16 total. Cannot form Chows — only Pongs and Kongs.",
-      "Dragons — 3 tiles (Red/Green/White), x4 each = 12 total. Cannot form Chows — only Pongs and Kongs.",
-      "Flowers & Seasons — 4 Flower + 4 Season tiles, each appears once = 8 total. When drawn, reveal immediately and draw a replacement."
+    "tile_groups": [
+      {
+        "label": "Bamboo",
+        "tiles": [
+          {
+            "img": "MJs1-",
+            "name": "1 Bamboo"
+          },
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          },
+          {
+            "img": "MJs3-",
+            "name": "3 Bamboos"
+          },
+          {
+            "img": "MJs4-",
+            "name": "4 Bamboos"
+          },
+          {
+            "img": "MJs5-",
+            "name": "5 Bamboos"
+          },
+          {
+            "img": "MJs6-",
+            "name": "6 Bamboos"
+          },
+          {
+            "img": "MJs7-",
+            "name": "7 Bamboos"
+          },
+          {
+            "img": "MJs8-",
+            "name": "8 Bamboos"
+          },
+          {
+            "img": "MJs9-",
+            "name": "9 Bamboos"
+          }
+        ]
+      },
+      {
+        "label": "Circles",
+        "tiles": [
+          {
+            "img": "MJt1-",
+            "name": "1 Circle"
+          },
+          {
+            "img": "MJt2-",
+            "name": "2 Circles"
+          },
+          {
+            "img": "MJt3-",
+            "name": "3 Circles"
+          },
+          {
+            "img": "MJt4-",
+            "name": "4 Circles"
+          },
+          {
+            "img": "MJt5-",
+            "name": "5 Circles"
+          },
+          {
+            "img": "MJt6-",
+            "name": "6 Circles"
+          },
+          {
+            "img": "MJt7-",
+            "name": "7 Circles"
+          },
+          {
+            "img": "MJt8-",
+            "name": "8 Circles"
+          },
+          {
+            "img": "MJt9-",
+            "name": "9 Circles"
+          }
+        ]
+      },
+      {
+        "label": "Characters",
+        "tiles": [
+          {
+            "img": "MJw1-",
+            "name": "1 Character"
+          },
+          {
+            "img": "MJw2-",
+            "name": "2 Characters"
+          },
+          {
+            "img": "MJw3-",
+            "name": "3 Characters"
+          },
+          {
+            "img": "MJw4-",
+            "name": "4 Characters"
+          },
+          {
+            "img": "MJw5-",
+            "name": "5 Characters"
+          },
+          {
+            "img": "MJw6-",
+            "name": "6 Characters"
+          },
+          {
+            "img": "MJw7-",
+            "name": "7 Characters"
+          },
+          {
+            "img": "MJw8-",
+            "name": "8 Characters"
+          },
+          {
+            "img": "MJw9-",
+            "name": "9 Characters"
+          }
+        ]
+      },
+      {
+        "label": "Winds — Pong/Kong only",
+        "tiles": [
+          {
+            "img": "MJf1-",
+            "name": "East Wind"
+          },
+          {
+            "img": "MJf2-",
+            "name": "South Wind"
+          },
+          {
+            "img": "MJf3-",
+            "name": "West Wind"
+          },
+          {
+            "img": "MJf4-",
+            "name": "North Wind"
+          }
+        ]
+      },
+      {
+        "label": "Dragons — Pong/Kong only",
+        "tiles": [
+          {
+            "img": "MJd1-",
+            "name": "Red Dragon"
+          },
+          {
+            "img": "MJd2-",
+            "name": "Green Dragon"
+          },
+          {
+            "img": "MJd3-",
+            "name": "White Dragon"
+          }
+        ]
+      },
+      {
+        "label": "Flowers & Seasons — reveal & draw replacement",
+        "tiles": [
+          {
+            "img": "MJh1-",
+            "name": "Spring"
+          },
+          {
+            "img": "MJh2-",
+            "name": "Summer"
+          },
+          {
+            "img": "MJh3-",
+            "name": "Autumn"
+          },
+          {
+            "img": "MJh4-",
+            "name": "Winter"
+          },
+          {
+            "img": "MJh5-",
+            "name": "Plum"
+          },
+          {
+            "img": "MJh6-",
+            "name": "Orchid"
+          },
+          {
+            "img": "MJh7-",
+            "name": "Chrysanthemum"
+          },
+          {
+            "img": "MJh8-",
+            "name": "Bamboo Flower"
+          }
+        ]
+      }
     ]
   },
   {
     "id": 3,
     "title": "Forming Melds",
     "content": "Melds are the sets you need to build a winning hand. There are 4 types:",
-    "details": [
-      "Pong — A set of 3 identical tiles (triplet). Most common way to form a meld.",
-      "Kong — A set of 4 identical tiles. Largest possible meld of identical tiles.",
-      "Chow — A sequence of 3 consecutive tiles of the same suit (e.g., 4-5-6 Bamboo). Numbers must be in order. You can only Chow from the player directly ahead of you.",
-      "Eyes — A pair of 2 identical tiles. Every winning hand needs one pair."
+    "meld_groups": [
+      {
+        "label": "Pong — 3 identical tiles",
+        "tiles": [
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          },
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          },
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          }
+        ]
+      },
+      {
+        "label": "Kong — 4 identical tiles",
+        "tiles": [
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          },
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          },
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          },
+          {
+            "img": "MJs2-",
+            "name": "2 Bamboos"
+          }
+        ]
+      },
+      {
+        "label": "Chow — 3 consecutive tiles, same suit (only from player ahead)",
+        "tiles": [
+          {
+            "img": "MJs3-",
+            "name": "3 Bamboos"
+          },
+          {
+            "img": "MJs4-",
+            "name": "4 Bamboos"
+          },
+          {
+            "img": "MJs5-",
+            "name": "5 Bamboos"
+          }
+        ]
+      },
+      {
+        "label": "Eyes — 1 pair of identical tiles (every hand needs one)",
+        "tiles": [
+          {
+            "img": "MJw5-",
+            "name": "5 Characters"
+          },
+          {
+            "img": "MJw5-",
+            "name": "5 Characters"
+          }
+        ]
+      }
     ]
   },
   {
     "id": 4,
     "title": "How to Win (Hu)",
-    "content": "A basic winning hand consists of 5 melds (Pong, Kong, or Chow) plus 1 pair of identical tiles (Eyes). This is called 'Hu'.",
+    "content": "A basic winning hand = 5 melds (Pong/Kong/Chow) + 1 pair (Eyes). This is called Hu. Here are some example winning hands:",
+    "winning_hands": [
+      {
+        "label": "Basic hand — mixed melds",
+        "rows": [
+          [
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJs2-",
+              "name": "2 Bamboos"
+            },
+            {
+              "img": "MJs3-",
+              "name": "3 Bamboos"
+            },
+            {
+              "img": "MJs4-",
+              "name": "4 Bamboos"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            }
+          ],
+          [
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJd2-",
+              "name": "Green Dragon"
+            },
+            {
+              "img": "MJd2-",
+              "name": "Green Dragon"
+            },
+            {
+              "img": "MJd2-",
+              "name": "Green Dragon"
+            },
+            {
+              "img": "MJw5-",
+              "name": "5 Characters"
+            },
+            {
+              "img": "MJw5-",
+              "name": "5 Characters"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "All Chows hand",
+        "rows": [
+          [
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw2-",
+              "name": "2 Characters"
+            },
+            {
+              "img": "MJw3-",
+              "name": "3 Characters"
+            },
+            {
+              "img": "MJw4-",
+              "name": "4 Characters"
+            },
+            {
+              "img": "MJw5-",
+              "name": "5 Characters"
+            },
+            {
+              "img": "MJw6-",
+              "name": "6 Characters"
+            },
+            {
+              "img": "MJw7-",
+              "name": "7 Characters"
+            },
+            {
+              "img": "MJw8-",
+              "name": "8 Characters"
+            },
+            {
+              "img": "MJw9-",
+              "name": "9 Characters"
+            }
+          ],
+          [
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt2-",
+              "name": "2 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt4-",
+              "name": "4 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
+            },
+            {
+              "img": "MJt6-",
+              "name": "6 Circles"
+            },
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            },
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "All Triplets hand",
+        "rows": [
+          [
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJs1-",
+              "name": "1 Bamboo"
+            },
+            {
+              "img": "MJs1-",
+              "name": "1 Bamboo"
+            },
+            {
+              "img": "MJs1-",
+              "name": "1 Bamboo"
+            }
+          ],
+          [
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJd1-",
+              "name": "Red Dragon"
+            },
+            {
+              "img": "MJd1-",
+              "name": "Red Dragon"
+            },
+            {
+              "img": "MJd1-",
+              "name": "Red Dragon"
+            },
+            {
+              "img": "MJd3-",
+              "name": "White Dragon"
+            },
+            {
+              "img": "MJd3-",
+              "name": "White Dragon"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "Full Flush — Circles only",
+        "rows": [
+          [
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt2-",
+              "name": "2 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt4-",
+              "name": "4 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
+            }
+          ],
+          [
+            {
+              "img": "MJt6-",
+              "name": "6 Circles"
+            },
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            },
+            {
+              "img": "MJt8-",
+              "name": "8 Circles"
+            },
+            {
+              "img": "MJt9-",
+              "name": "9 Circles"
+            },
+            {
+              "img": "MJt9-",
+              "name": "9 Circles"
+            },
+            {
+              "img": "MJt9-",
+              "name": "9 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            }
+          ]
+        ]
+      }
+    ],
     "details": [
       "You need exactly 5 melds + 1 pair to win.",
       "Each meld can be any combination of Pongs, Kongs, or Chows.",
-      "If you are one tile away from completing your winning hand, you are in a 'Ready Hand'."
+      "If you are one tile away from winning, you are in a 'Ready Hand'."
     ]
   },
   {
@@ -46,7 +612,7 @@
       "All Triplets (+4 Tai) — A winning hand made entirely of Pongs and Kongs, no Chows allowed.",
       "Full Flush (+4 Tai) — A winning hand using only one suit (Bamboo, Circle, or Character), no Honor tiles.",
       "Concealed Hand (+1 Tai) — You win without claiming any discarded tiles. All melds formed by drawing tiles yourself.",
-      "Self-Draw (+1 Tai) — You draw the winning tile yourself from the wall instead of claiming a discard. All three other players pay you!"
+      "Self-Draw (+1 Tai) — You draw the winning tile yourself from the wall. All three other players pay you!"
     ]
   },
   {
@@ -58,10 +624,10 @@
       {
         "heading": "Tile Types",
         "points": [
-          "Bamboo, Circles, Characters — 9 each, x4 = 36 per suit",
-          "Winds (E/S/W/N) — x4 each = 16. No Chows, only Pongs & Kongs.",
-          "Dragons (Red/Green/White) — x4 each = 12. No Chows, only Pongs & Kongs.",
-          "Flowers/Seasons — 8 total, each x1. Reveal & draw replacement."
+          "Bamboo, Circles, Characters 9 each, x4 = 36 per suit",
+          "Winds (East/South/West/North) x4 each = 16. No Chows, only Pongs & Kongs.",
+          "Dragons (Red/Green/White) x4 each = 12. No Chows, only Pongs & Kongs.",
+          "Flowers/Seasons 8 total, each x1. Reveal & draw replacement."
         ]
       },
       {
@@ -69,7 +635,7 @@
         "points": [
           "Pong = 3 identical tiles",
           "Kong = 4 identical tiles",
-          "Chow = 3 consecutive tiles, same suit (only from player ahead)",
+          "Chow = 3 consecutive tiles, same suit only from player ahead",
           "Eyes = 2 identical tiles (pair)"
         ]
       },
