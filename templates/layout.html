@@ -10,7 +10,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4">
-  <a class="navbar-brand fw-bold" href="/">🀄 Learn Mahjong</a>
+  <a class="navbar-brand fw-bold" href="/">🀄 Taiwanese Mahjong</a>
   <div class="ms-auto d-flex gap-2">
     <a href="/" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
     <a href="/learn/1" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'learn' and request.view_args.get('lesson_num') != 6 %}active{% endif %}">Learn</a>

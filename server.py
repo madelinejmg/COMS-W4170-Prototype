@@ -91,7 +91,8 @@ def practice_answer(question_num):
     save_user_data(user_data)
 
     return render_template('practice.html', question=question, question_num=question_num,
-                           total=len(questions), selected=selected, is_correct=is_correct, show_result=True)
+                           total=len(questions), selected=selected, is_correct=is_correct, show_result=True,
+                           review_lesson=question.get('review_lesson', 1))
 
 
 @app.route('/quiz/<int:question_num>', methods=['GET', 'POST'])
@@ -190,7 +191,6 @@ def results():
 
     return render_template('results.html', score=score, total=total,
                            answered=len(answers), results=result_rows)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
