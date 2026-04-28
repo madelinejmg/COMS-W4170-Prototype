@@ -13,8 +13,8 @@
   <a class="navbar-brand fw-bold" href="/">🀄 Taiwanese Mahjong</a>
   <div class="ms-auto d-flex gap-2">
     <a href="/" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
-    <a href="/learn/1" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'learn' and request.view_args.get('lesson_num') != 6 %}active{% endif %}">Learn</a>
-    <a href="/learn/6" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'learn' and request.view_args.get('lesson_num') == 6 %}active{% endif %}">Review</a>
+    <a href="/learn/1" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'learn' and request.view_args.get('lesson_num') != 5 %}active{% endif %}">Learn</a>
+    <a href="/learn/5" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'learn' and request.view_args.get('lesson_num') == 5 %}active{% endif %}">Review</a>
     <a href="/practice/1" class="btn btn-sm btn-outline-secondary {% if request.endpoint in ['practice', 'practice_answer'] %}active{% endif %}">Practice</a>
     <a href="/resume" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'quiz' %}active{% endif %}">Quiz</a>
     <a href="/results" class="btn btn-sm btn-outline-secondary {% if request.endpoint == 'results' %}active{% endif %}">Results</a>

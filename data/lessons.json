@@ -1,6 +1,6 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "title": "Tile Types Overview",
     "content": "There are 6 types of tiles in Taiwanese Mahjong:",
     "tile_groups": [
@@ -205,7 +205,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "Forming Melds",
     "content": "Melds are the sets you need to build a winning hand. There are 4 types:",
     "meld_groups": [
@@ -280,7 +280,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "title": "How to Win (Hu)",
     "content": "A basic winning hand = 5 melds (Pong/Kong/Chow) + 1 pair (Eyes). This is called Hu. Here are some example winning hands:",
     "winning_hands": [
@@ -600,7 +600,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Scoring: Bonus Points (Tai)",
     "content": "In Taiwanese Mahjong, winning hands earn bonus points called Tai. The more Tai you have, the more you win!",
     "details": [
@@ -611,7 +611,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Review: Tiles & Melds",
     "is_review": true,
     "content": "Let's review what you've learned before the practice section.",
