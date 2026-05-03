@@ -213,16 +213,16 @@
         "label": "Pong — 3 identical tiles",
         "tiles": [
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJt5-",
+            "name": "5 Circles"
           },
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJt5-",
+            "name": "5 Circles"
           },
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJt5-",
+            "name": "5 Circles"
           }
         ]
       },
@@ -230,20 +230,20 @@
         "label": "Kong — 4 identical tiles",
         "tiles": [
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJw7-",
+            "name": "7 Characters"
           },
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJw7-",
+            "name": "7 Characters"
           },
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJw7-",
+            "name": "7 Characters"
           },
           {
-            "img": "MJs2-",
-            "name": "2 Bamboos"
+            "img": "MJw7-",
+            "name": "7 Characters"
           }
         ]
       },
@@ -281,11 +281,15 @@
   },
   {
     "id": 3,
-    "title": "How to Win (Hu)",
-    "content": "A basic winning hand = 5 melds (Pong/Kong/Chow) + 1 pair (Eyes). This is called Hu. Here are some example winning hands:",
-    "winning_hands": [
+    "title": "How to Win & Scoring",
+    "content": "A winning hand (Hu) = 5 melds + 1 pair (Eyes), totalling 17 tiles. A meld is a set of tiles — either a Pong (3 identical), Kong (4 identical), or Chow (3 consecutive same suit). Certain patterns earn Tai bonus points.",
+    "win_scoring_section": true,
+    "hand_examples": [
       {
-        "label": "Basic hand — mixed melds",
+        "label": "Basic Hand",
+        "tai_label": "0 Tai — base payout only",
+        "tai_level": "neutral",
+        "note": "5 melds (Pong/Chow/Kong) + 1 pair = 17 tiles. Discarder pays all three players. On Self-Draw, all three opponents each pay you.",
         "rows": [
           [
             {
@@ -327,51 +331,16 @@
           ],
           [
             {
-              "img": "MJf1-",
-              "name": "East Wind"
+              "img": "MJt5-",
+              "name": "5 Circles"
             },
             {
-              "img": "MJf1-",
-              "name": "East Wind"
+              "img": "MJt6-",
+              "name": "6 Circles"
             },
             {
-              "img": "MJf1-",
-              "name": "East Wind"
-            },
-            {
-              "img": "MJd2-",
-              "name": "Green Dragon"
-            },
-            {
-              "img": "MJd2-",
-              "name": "Green Dragon"
-            },
-            {
-              "img": "MJd2-",
-              "name": "Green Dragon"
-            },
-            {
-              "img": "MJw5-",
-              "name": "5 Characters"
-            },
-            {
-              "img": "MJw5-",
-              "name": "5 Characters"
-            }
-          ]
-        ]
-      },
-      {
-        "label": "All Chows hand",
-        "rows": [
-          [
-            {
-              "img": "MJw1-",
-              "name": "1 Character"
-            },
-            {
-              "img": "MJw2-",
-              "name": "2 Characters"
+              "img": "MJt7-",
+              "name": "7 Circles"
             },
             {
               "img": "MJw3-",
@@ -386,8 +355,232 @@
               "name": "5 Characters"
             },
             {
-              "img": "MJw6-",
-              "name": "6 Characters"
+              "img": "MJs7-",
+              "name": "7 Bamboos"
+            },
+            {
+              "img": "MJs7-",
+              "name": "7 Bamboos"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "All Triplets",
+        "tai_label": "+4 Tai",
+        "tai_level": "high",
+        "note": "Every meld is a Pong or Kong — no Chows at all.",
+        "rows": [
+          [
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJw1-",
+              "name": "1 Character"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJs5-",
+              "name": "5 Bamboos"
+            },
+            {
+              "img": "MJs5-",
+              "name": "5 Bamboos"
+            },
+            {
+              "img": "MJs5-",
+              "name": "5 Bamboos"
+            }
+          ],
+          [
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            },
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            },
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            },
+            {
+              "img": "MJw9-",
+              "name": "9 Characters"
+            },
+            {
+              "img": "MJw9-",
+              "name": "9 Characters"
+            },
+            {
+              "img": "MJw9-",
+              "name": "9 Characters"
+            },
+            {
+              "img": "MJw5-",
+              "name": "5 Characters"
+            },
+            {
+              "img": "MJw5-",
+              "name": "5 Characters"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "Full Flush",
+        "tai_label": "+4 Tai",
+        "tai_level": "high",
+        "note": "All tiles from one suit only — no Winds or Dragons.",
+        "rows": [
+          [
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt1-",
+              "name": "1 Circle"
+            },
+            {
+              "img": "MJt2-",
+              "name": "2 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt4-",
+              "name": "4 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
+            },
+            {
+              "img": "MJt6-",
+              "name": "6 Circles"
+            },
+            {
+              "img": "MJt7-",
+              "name": "7 Circles"
+            }
+          ],
+          [
+            {
+              "img": "MJt9-",
+              "name": "9 Circles"
+            },
+            {
+              "img": "MJt9-",
+              "name": "9 Circles"
+            },
+            {
+              "img": "MJt9-",
+              "name": "9 Circles"
+            },
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt4-",
+              "name": "4 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
+            },
+            {
+              "img": "MJt8-",
+              "name": "8 Circles"
+            },
+            {
+              "img": "MJt8-",
+              "name": "8 Circles"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "Big Three Dragons",
+        "tai_label": "+8 Tai",
+        "tai_level": "high",
+        "note": "Pong all three Dragon tiles: Red (中), Green (發), White (白).",
+        "rows": [
+          [
+            {
+              "img": "MJd1-",
+              "name": "Red Dragon"
+            },
+            {
+              "img": "MJd1-",
+              "name": "Red Dragon"
+            },
+            {
+              "img": "MJd1-",
+              "name": "Red Dragon"
+            },
+            {
+              "img": "MJd2-",
+              "name": "Green Dragon"
+            },
+            {
+              "img": "MJd2-",
+              "name": "Green Dragon"
+            },
+            {
+              "img": "MJd2-",
+              "name": "Green Dragon"
+            },
+            {
+              "img": "MJd3-",
+              "name": "White Dragon"
+            },
+            {
+              "img": "MJd3-",
+              "name": "White Dragon"
+            },
+            {
+              "img": "MJd3-",
+              "name": "White Dragon"
+            }
+          ],
+          [
+            {
+              "img": "MJt3-",
+              "name": "3 Circles"
+            },
+            {
+              "img": "MJt4-",
+              "name": "4 Circles"
+            },
+            {
+              "img": "MJt5-",
+              "name": "5 Circles"
             },
             {
               "img": "MJw7-",
@@ -400,16 +593,74 @@
             {
               "img": "MJw9-",
               "name": "9 Characters"
+            },
+            {
+              "img": "MJs5-",
+              "name": "5 Bamboos"
+            },
+            {
+              "img": "MJs5-",
+              "name": "5 Bamboos"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "Big Four Winds",
+        "tai_label": "+8 Tai",
+        "tai_level": "high",
+        "note": "Pong all four Wind tiles: East, South, West, North.",
+        "rows": [
+          [
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf1-",
+              "name": "East Wind"
+            },
+            {
+              "img": "MJf2-",
+              "name": "South Wind"
+            },
+            {
+              "img": "MJf2-",
+              "name": "South Wind"
+            },
+            {
+              "img": "MJf2-",
+              "name": "South Wind"
+            },
+            {
+              "img": "MJf3-",
+              "name": "West Wind"
+            },
+            {
+              "img": "MJf3-",
+              "name": "West Wind"
+            },
+            {
+              "img": "MJf3-",
+              "name": "West Wind"
             }
           ],
           [
             {
-              "img": "MJt1-",
-              "name": "1 Circle"
+              "img": "MJf4-",
+              "name": "North Wind"
             },
             {
-              "img": "MJt2-",
-              "name": "2 Circles"
+              "img": "MJf4-",
+              "name": "North Wind"
+            },
+            {
+              "img": "MJf4-",
+              "name": "North Wind"
             },
             {
               "img": "MJt3-",
@@ -424,194 +675,109 @@
               "name": "5 Circles"
             },
             {
-              "img": "MJt6-",
-              "name": "6 Circles"
+              "img": "MJs9-",
+              "name": "9 Bamboos"
             },
             {
-              "img": "MJt7-",
-              "name": "7 Circles"
-            },
-            {
-              "img": "MJt7-",
-              "name": "7 Circles"
-            }
-          ]
-        ]
-      },
-      {
-        "label": "All Triplets hand",
-        "rows": [
-          [
-            {
-              "img": "MJw1-",
-              "name": "1 Character"
-            },
-            {
-              "img": "MJw1-",
-              "name": "1 Character"
-            },
-            {
-              "img": "MJw1-",
-              "name": "1 Character"
-            },
-            {
-              "img": "MJt1-",
-              "name": "1 Circle"
-            },
-            {
-              "img": "MJt1-",
-              "name": "1 Circle"
-            },
-            {
-              "img": "MJt1-",
-              "name": "1 Circle"
-            },
-            {
-              "img": "MJs1-",
-              "name": "1 Bamboo"
-            },
-            {
-              "img": "MJs1-",
-              "name": "1 Bamboo"
-            },
-            {
-              "img": "MJs1-",
-              "name": "1 Bamboo"
-            }
-          ],
-          [
-            {
-              "img": "MJf1-",
-              "name": "East Wind"
-            },
-            {
-              "img": "MJf1-",
-              "name": "East Wind"
-            },
-            {
-              "img": "MJf1-",
-              "name": "East Wind"
-            },
-            {
-              "img": "MJd1-",
-              "name": "Red Dragon"
-            },
-            {
-              "img": "MJd1-",
-              "name": "Red Dragon"
-            },
-            {
-              "img": "MJd1-",
-              "name": "Red Dragon"
-            },
-            {
-              "img": "MJd3-",
-              "name": "White Dragon"
-            },
-            {
-              "img": "MJd3-",
-              "name": "White Dragon"
-            }
-          ]
-        ]
-      },
-      {
-        "label": "Full Flush — Circles only",
-        "rows": [
-          [
-            {
-              "img": "MJt1-",
-              "name": "1 Circle"
-            },
-            {
-              "img": "MJt1-",
-              "name": "1 Circle"
-            },
-            {
-              "img": "MJt1-",
-              "name": "1 Circle"
-            },
-            {
-              "img": "MJt2-",
-              "name": "2 Circles"
-            },
-            {
-              "img": "MJt3-",
-              "name": "3 Circles"
-            },
-            {
-              "img": "MJt4-",
-              "name": "4 Circles"
-            },
-            {
-              "img": "MJt5-",
-              "name": "5 Circles"
-            },
-            {
-              "img": "MJt5-",
-              "name": "5 Circles"
-            },
-            {
-              "img": "MJt5-",
-              "name": "5 Circles"
-            }
-          ],
-          [
-            {
-              "img": "MJt6-",
-              "name": "6 Circles"
-            },
-            {
-              "img": "MJt7-",
-              "name": "7 Circles"
-            },
-            {
-              "img": "MJt8-",
-              "name": "8 Circles"
-            },
-            {
-              "img": "MJt9-",
-              "name": "9 Circles"
-            },
-            {
-              "img": "MJt9-",
-              "name": "9 Circles"
-            },
-            {
-              "img": "MJt9-",
-              "name": "9 Circles"
-            },
-            {
-              "img": "MJt3-",
-              "name": "3 Circles"
-            },
-            {
-              "img": "MJt3-",
-              "name": "3 Circles"
+              "img": "MJs9-",
+              "name": "9 Bamboos"
             }
           ]
         ]
       }
     ],
-    "details": [
-      "You need exactly 5 melds + 1 pair to win.",
-      "Each meld can be any combination of Pongs, Kongs, or Chows.",
-      "If you are one tile away from winning, you are in a 'Ready Hand'."
-    ]
+    "tai_bonuses": [
+      {
+        "label": "Self-Draw",
+        "tai": "+1 Tai",
+        "level": "low",
+        "desc": "Draw the winning tile yourself; all 3 opponents pay you"
+      },
+      {
+        "label": "Concealed Hand",
+        "tai": "+1 Tai",
+        "level": "low",
+        "desc": "No claimed tiles at all — all 16 tiles drawn yourself"
+      },
+      {
+        "label": "Concealed Self-Draw",
+        "tai": "+3 Tai",
+        "level": "mid",
+        "desc": "Concealed Hand AND Self-Draw combined"
+      },
+      {
+        "label": "All Triplets",
+        "tai": "+4 Tai",
+        "level": "high4",
+        "desc": "All Pongs/Kongs, no Chows"
+      },
+      {
+        "label": "Full Flush",
+        "tai": "+8 Tai",
+        "level": "high8",
+        "desc": "One suit only, no honor tiles"
+      },
+      {
+        "label": "Big Three Dragons",
+        "tai": "+8 Tai",
+        "level": "high8",
+        "desc": "Pong all 3 Dragon tiles"
+      },
+      {
+        "label": "Big Four Winds",
+        "tai": "+8 Tai",
+        "level": "high8",
+        "desc": "Pong all 4 Wind tiles"
+      }
+    ],
+    "scoring_note": {
+      "formula": "Base + (Tai × Per-Tai Amount)",
+      "explanation": "The base (底金) and per-Tai amount are agreed before the game. Amounts are typically in TWD (Taiwan Dollar) or any currency agreed upon. Example: Base = NT$30, Per-Tai = NT$50.",
+      "example_base": 30,
+      "example_per_tai": 50,
+      "rows": [
+        {
+          "tai": 0,
+          "label": "Plain Hu",
+          "total": 30,
+          "hint": "30 + (0×50)"
+        },
+        {
+          "tai": 1,
+          "label": "Self-Draw only",
+          "total": 80,
+          "hint": "30 + (1×50)"
+        },
+        {
+          "tai": 1,
+          "label": "Concealed Hand only",
+          "total": 80,
+          "hint": "30 + (1×50)"
+        },
+        {
+          "tai": 3,
+          "label": "Concealed Self-Draw",
+          "total": 180,
+          "hint": "30 + (3×50)"
+        },
+        {
+          "tai": 4,
+          "label": "All Triplets",
+          "total": 230,
+          "hint": "30 + (4×50)"
+        },
+        {
+          "tai": 8,
+          "label": "Full Flush / Big Three Dragons / Big Four Winds",
+          "total": 430,
+          "hint": "30 + (8×50)"
+        }
+      ],
+      "note": "Amounts shown in NT$. Discard win: the loser pays the winner. Self-Draw: each of the 3 opponents pays the winner separately."
+    }
   },
   {
     "id": 4,
-    "title": "Scoring: Bonus Points (Tai)",
-    "content": "In Taiwanese Mahjong, winning hands earn bonus points called Tai. The more Tai you have, the more you win!",
-    "details": [
-      "All Triplets (+4 Tai) — A winning hand made entirely of Pongs and Kongs, no Chows allowed.",
-      "Full Flush (+4 Tai) — A winning hand using only one suit (Bamboo, Circle, or Character), no Honor tiles.",
-      "Concealed Hand (+1 Tai) — You win without claiming any discarded tiles. All melds formed by drawing tiles yourself.",
-      "Self-Draw (+1 Tai) — You draw the winning tile yourself from the wall. All three other players pay you!"
-    ]
-  },
-  {
-    "id": 5,
     "title": "Review: Tiles & Melds",
     "is_review": true,
     "content": "Let's review what you've learned before the practice section.",
@@ -619,28 +785,41 @@
       {
         "heading": "Tile Types",
         "points": [
-          "Bamboo, Circles, Characters 9 each, x4 = 36 per suit",
-          "Winds (East/South/West/North) x4 each = 16. No Chows, only Pongs & Kongs.",
-          "Dragons (Red/Green/White) x4 each = 12. No Chows, only Pongs & Kongs.",
-          "Flowers/Seasons 8 total, each x1. Reveal & draw replacement."
+          "Bamboo, Circles, Characters — 9 values each × 4 copies = 36 tiles per suit",
+          "Winds (East / South / West / North) — Pong or Kong only, no Chow",
+          "Dragons (Red / Green / White) — Pong or Kong only, no Chow",
+          "Flowers & Seasons — 8 tiles, each unique. Reveal immediately and draw a replacement tile."
         ]
       },
       {
         "heading": "Melds",
         "points": [
-          "Pong = 3 identical tiles",
-          "Kong = 4 identical tiles",
-          "Chow = 3 consecutive tiles, same suit only from player ahead",
-          "Eyes = 2 identical tiles (pair)"
+          "Pong — 3 identical tiles (claim from any player)",
+          "Kong — 4 identical tiles (claim from any player, then draw a replacement tile)",
+          "Chow — 3 consecutive tiles, same suit, claimed from the player directly ahead only",
+          "Eyes — 1 pair of identical tiles, required in every winning hand"
         ]
       },
       {
-        "heading": "Winning & Scoring",
+        "heading": "Winning (Hu)",
         "points": [
-          "Win (Hu) = 5 melds + 1 pair (Eyes)",
+          "5 melds + 1 pair (Eyes) = 17 tiles total",
           "Ready Hand = one tile away from winning",
-          "All Triplets = +4 Tai | Full Flush = +4 Tai",
-          "Concealed Hand = +1 Tai | Self-Draw = +1 Tai"
+          "Plain Hu (0 Tai): discarder pays all three players the base amount",
+          "Self-Draw: all three opponents each pay the winner the full amount"
+        ]
+      },
+      {
+        "heading": "Tai Bonuses",
+        "points": [
+          "Self-Draw — +1 Tai: draw the winning tile yourself",
+          "Concealed Hand — +1 Tai: no claimed tiles at all, all 16 tiles drawn yourself",
+          "Concealed Self-Draw — +3 Tai: Concealed Hand AND Self-Draw combined",
+          "All Triplets — +4 Tai: all melds are Pongs or Kongs, no Chows",
+          "Full Flush — +8 Tai: all tiles from one suit only, no honor tiles",
+          "Big Three Dragons — +8 Tai: Pong all three Dragon tiles",
+          "Big Four Winds — +8 Tai: Pong all four Wind tiles",
+          "Bonuses stack — e.g. All Triplets + Self-Draw = 5 Tai"
         ]
       }
     ]

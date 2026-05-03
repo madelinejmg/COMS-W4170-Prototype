@@ -1,21 +1,6 @@
 {
   "started_at": null,
-  "lesson_visits": {
-    "2": "2026-04-27T22:35:35.515621"
-  },
-  "practice_answers": {
-    "1": {
-      "selected": 0,
-      "correct": 1,
-      "is_correct": false,
-      "time": "2026-04-27T22:35:34.643971"
-    }
-  },
-  "quiz_answers": {
-    "1": {
-      "selected": "3",
-      "is_correct": false,
-      "time": "2026-04-27T22:35:30.126596"
-    }
-  }
+  "lesson_visits": {},
+  "practice_answers": {},
+  "quiz_answers": {}
 }
