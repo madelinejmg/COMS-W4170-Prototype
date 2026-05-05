@@ -1,18 +1,134 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Quiz</title>
-</head>
-<body>
-    <h1>Quiz Question {{ question_num }}</h1>
-    <p>This is a quiz question.</p>
+{% extends "layout.html" %}
+{% block title %}Quiz — Question {{ question_num }}{% endblock %}
 
-    <form action="/results">
-        <input type="radio" name="answer" value="A"> A<br>
-        <input type="radio" name="answer" value="B"> B<br>
-        <input type="radio" name="answer" value="C"> C<br>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html>
+{% block content %}
+
+<div class="mb-3">
+  <small class="text-muted text-uppercase fw-bold d-block mb-1" style="letter-spacing:1px">Question {{ question_num }} of {{ total }}</small>
+  <div class="progress" style="height:6px">
+    <div class="progress-bar" style="width:{{ (question_num / total * 100)|int }}%"></div>
+  </div>
+</div>
+
+<div class="card shadow-sm border-0 p-4">
+  <h4 class="mb-4" style="font-size:1.15rem; color:#3d6b52">{{ q.question }}</h4>
+
+  {% if q.type == 'tile_id' and q.tiles %}
+  <div class="tile-tray mb-4">
+    {% for tile in q.tiles %}
+    <img src="{{ url_for('static', filename='img/tiles/' + tile.symbol + '.svg.png') }}" class="tile-img">
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if q.type == 'tile_select' %}
+  <p class="text-muted mb-3" style="font-size:13px">{{ q.description }}</p>
+  <p class="mb-3" style="font-size:12px; color:#5a5248;">Hover to see tile name · Click the tile you want to discard</p>
+  <form method="POST" action="/quiz/{{ question_num }}">
+    <input type="hidden" name="submitted" value="{{ '1' if show_feedback else '0' }}">
+    <input type="hidden" name="answer" id="hidden-answer" value="{{ submitted_answer or '' }}">
+    <div class="mb-3" style="display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end;">
+      {% for i in range(q.tiles|length) %}
+      {% set tile = q.tiles[i] %}
+      {% set is_answer = (i == q.answer) %}
+      {% set is_submitted = (submitted_answer == i|string) %}
+      {% set is_drawn = tile.drawn is defined and tile.drawn %}
+      <div class="tile-wrap tile-selectable
+        {% if show_feedback and is_answer %}tile-correct
+        {% elif show_feedback and is_submitted and not is_answer %}tile-wrong
+        {% elif not show_feedback and is_submitted %}tile-picked
+        {% endif %}"
+        {% if not show_feedback %}onclick="selectTile(this, {{ i }})"{% endif %}>
+        {% if is_drawn %}
+        <span style="font-size:10px; font-weight:600; color:#3d6b52; margin-bottom:3px;">DRAWN</span>
+        {% endif %}
+        <img src="{{ url_for('static', filename='img/tiles/' + tile.symbol + '.svg.png') }}"
+             class="tile-img"
+             style="{% if is_drawn %}outline: 2px dashed #3d6b52; border-radius:4px;{% endif %}">
+        <div class="tile-tooltip">{{ tile.name }}</div>
+        {% if show_feedback and is_answer %}
+          <span class="tile-badge tile-badge-correct">✓</span>
+        {% elif show_feedback and is_submitted and not is_answer %}
+          <span class="tile-badge tile-badge-wrong">✗</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% if show_feedback %}
+    <div class="feedback-box {% if is_correct %}feedback-correct{% else %}feedback-wrong{% endif %} mb-4">
+      {% if is_correct %}<strong>Correct!</strong>{% else %}<strong>Not quite.</strong>{% endif %}
+      {{ q.explanation }}
+    </div>
+    <button type="submit" class="btn btn-main px-4">
+      {% if question_num < total %}Next →{% else %}See Results{% endif %}
+    </button>
+    {% else %}
+    <button type="submit" class="btn btn-main px-4 mt-2" id="submit-btn" {% if not submitted_answer %}disabled{% endif %}>
+      Discard Selected Tile
+    </button>
+    {% endif %}
+  </form>
+
+  {% else %}
+  <form method="POST" action="/quiz/{{ question_num }}">
+    <input type="hidden" name="submitted" value="{{ '1' if show_feedback else '0' }}">
+    <input type="hidden" name="answer" id="hidden-answer" value="{{ submitted_answer or '' }}">
+
+    <div class="d-flex flex-column gap-2 mb-4">
+      {% for option in q.options %}
+      {% set i = loop.index0 %}
+      <div class="opt-row
+        {% if show_feedback and i == q.answer %}opt-correct
+        {% elif show_feedback and submitted_answer == i|string and i != q.answer %}opt-wrong
+        {% elif not show_feedback and submitted_answer == i|string %}opt-selected
+        {% endif %}"
+        data-index="{{ i }}"
+        {% if not show_feedback %}onclick="selectOption(this, {{ i }})"{% endif %}>
+        <span class="opt-letter">{{ ['A','B','C','D'][i] }}</span>
+        <span>{{ option }}</span>
+        {% if show_feedback and i == q.answer %}
+          <span class="ms-auto fw-bold" style="color:#2d6b38">✓</span>
+        {% elif show_feedback and submitted_answer == i|string and i != q.answer %}
+          <span class="ms-auto fw-bold" style="color:#8c3030">✗</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if show_feedback %}
+    <div class="feedback-box {% if is_correct %}feedback-correct{% else %}feedback-wrong{% endif %} mb-4">
+      {% if is_correct %}<strong>Correct!</strong>{% else %}<strong>Not quite.</strong>{% endif %}
+      {{ q.explanation }}
+    </div>
+
+
+    
+    <button type="submit" class="btn btn-main px-4">
+      {% if question_num < total %}Next →{% else %}See Results{% endif %}
+    </button>
+    {% else %}
+    <button type="submit" class="btn btn-main px-4" id="submit-btn" {% if not submitted_answer %}disabled{% endif %}>
+      Check Answer
+    </button>
+    {% endif %}
+
+  </form>
+  {% endif %}
+</div>
+
+<script>
+function selectTile(el, index) {
+  document.querySelectorAll('.tile-selectable').forEach(t => t.classList.remove('tile-picked'));
+  el.classList.add('tile-picked');
+  document.getElementById('hidden-answer').value = index;
+  document.getElementById('submit-btn').disabled = false;
+}
+function selectOption(el, index) {
+  document.querySelectorAll('.opt-row').forEach(r => r.classList.remove('opt-selected'));
+  el.classList.add('opt-selected');
+  document.getElementById('hidden-answer').value = index;
+  document.getElementById('submit-btn').disabled = false;
+}
+</script>
+
+{% endblock %}

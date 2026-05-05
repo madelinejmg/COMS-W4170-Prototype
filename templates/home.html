@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
-    <h1>Taiwanese Mahjong</h1>
-    <p>Click below to begin.</p>
-    <a href="/learn/1">
-        <button>Start</button>
-    </a>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}Learn Mahjong — Home{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+  <h1 class="display-4 fw-bold" style="color:#3d6b52">🀄 Learn to Play</h1>
+  <h2 class="fw-bold" style="color:#3d6b52">TAIWANESE MAHJONG</h2>
+  <p class="lead mt-3">Taiwanese Mahjong is a fast-paced, social tile game played by four players that combines strategy, memory, and a bit of luck. Each player starts with 16 tiles and takes turns drawing and discarding to form a winning hand made of sets and a pair. Learn the tiles, melds, scoring, and test your knowledge!</p>
+  <p class="text-muted">~10 minutes | No prior experience required</p>
+  <a href="/start" class="btn btn-main btn-lg mt-3">Start Learning</a>
+</div>
+{% endblock %}

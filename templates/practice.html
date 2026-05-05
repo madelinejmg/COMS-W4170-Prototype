@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block title %}Practice — Question {{ question_num }}{% endblock %}
+
+{% block content %}
+
+<div class="mb-3">
+  <div class="d-flex align-items-center justify-content-between mb-1">
+    <small class="text-muted">Practice {{ question_num }} of {{ total }}</small>
+  </div>
+
+  {# Question picker pills #}
+  <div class="d-flex gap-2 mb-2" style="flex-wrap:wrap;">
+    {% for i in range(1, total + 1) %}
+    <a href="/practice/{{ i }}"
+       style="width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+              font-size:13px; font-weight:600; text-decoration:none; border:1.5px solid;
+              {% if i == question_num %}
+                background:#3d6b52; color:#fff; border-color:#3d6b52;
+              {% else %}
+                background:#fff; color:#3d6b52; border-color:#c0dbc8;
+              {% endif %}">
+      {{ i }}
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="progress mt-1" style="height:6px">
+    <div class="progress-bar" style="width:{{ (question_num / total * 100)|int }}%"></div>
+  </div>
+</div>
+
+<div class="card shadow-sm border-0 p-4">
+  <h4 class="fw-bold mb-2" style="color:#3d6b52">{{ question.question }}</h4>
+  <p class="text-muted mb-4" style="font-size:13px">{{ question.description }}</p>
+
+  {% if question.tiles %}
+  <div class="tile-tray mb-4">
+    {% for tile in question.tiles %}
+    <img src="{{ url_for('static', filename='img/tiles/' + tile + '.svg.png') }}" class="tile-img">
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if not show_result %}
+  <form method="POST" action="/practice/{{ question_num }}/answer">
+    <div class="d-flex flex-column gap-2 mb-4">
+      {% for option in question.options %}
+      <div class="opt-row" onclick="selectPracticeOption(this, {{ loop.index0 }})">
+        <span class="opt-letter">{{ ['A','B','C','D'][loop.index0] }}</span>
+        <span>{{ option }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <input type="hidden" name="answer" id="practice-answer" value="">
+    <button type="submit" class="btn btn-main px-4" id="practice-submit" disabled>Check Answer</button>
+  </form>
+
+  {% else %}
+
+  <div class="d-flex flex-column gap-2 mb-4">
+    {% for option in question.options %}
+    {% set i = loop.index0 %}
+    <div class="opt-row
+      {% if i == question.correct %}opt-correct
+      {% elif i == selected and not is_correct %}opt-wrong
+      {% endif %}">
+      <span class="opt-letter">{{ ['A','B','C','D'][i] }}</span>
+      <span>{{ option }}</span>
+      {% if i == question.correct %}
+        <span class="ms-auto fw-bold" style="color:#2d6b38">✓</span>
+      {% elif i == selected and not is_correct %}
+        <span class="ms-auto fw-bold" style="color:#8c3030">✗</span>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="feedback-box {% if is_correct %}feedback-correct{% else %}feedback-wrong{% endif %} mb-4">
+    {% if is_correct %}
+      <strong>Great job!</strong>
+    {% else %}
+      <strong>Almost there!</strong>
+    {% endif %}
+    <p class="mt-2 mb-3">{{ question.explanation }}</p>
+    {% if not is_correct %}
+    <a href="/learn/{{ review_lesson }}" class="btn btn-outline-secondary review-btn">Review Lesson</a>
+    {% endif %}
+  </div>
+
+  <div class="d-flex gap-2">
+    <a href="/practice/{{ question_num }}" class="btn btn-outline-thirdary">Try Again</a>
+    {% if question_num < total %}
+    <a href="/practice/{{ question_num + 1 }}" class="btn btn-main px-4">Next →</a>
+    {% else %}
+    <a href="/resume" class="btn btn-main px-4">Start Quiz →</a>
+    {% endif %}
+  </div>
+
+  {% endif %}
+</div>
+
+<script>
+function selectPracticeOption(el, index) {
+  document.querySelectorAll('.opt-row').forEach(r => r.classList.remove('opt-selected'));
+  el.classList.add('opt-selected');
+  document.getElementById('practice-answer').value = index;
+  document.getElementById('practice-submit').disabled = false;
+}
+</script>
+
+{% endblock %}

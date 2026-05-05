@@ -1,11 +1,5 @@
-## Taiwanese Mahjong (COMS-W4170-Prototype)
---
+# COMS-W4170 Mahjong Learning App Prototype
+A web app for learning about Taiwanese Mahjong's basic rules and scoring.
 
-**Taiwanese Mahjong** is a fast-spaced, social tile game played by four players that combines strategy, memory,  and a bit of luck. Each player starts with 16 titles and takes turns drawing and discarding to form a winning hand made of sets and a pair.
-
---
-
-## Authors
-Emily Chang (ejc2231)
-Clark Chen (fc2861)
-Madeline Maldonado Gutierrez (mjm2418)
+# Authors
+Emily Chang (ejc2231), Madeline Maldonado Gutierrez (mjm2418), Clark Chen (fc2861)

@@ -1,18 +1,171 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Learn</title>
-</head>
-<body>
-    <h1>Lesson {{ lesson_num }}</h1>
-    <p>This is the learning page.</p>
+{% extends "layout.html" %}
+{% block title %}Learn — {{ lesson.title }}{% endblock %}
 
-    <a href="/learn/{{ lesson_num + 1 }}">
-        <button>Next Lesson</button>
-    </a>
+{% block content %}
 
-    <a href="/quiz/1">
-        <button>Go to Quiz</button>
-    </a>
-</body>
-</html>
+{% set content_lessons = total_lessons - 1 %}
+
+<div class="mb-3">
+  {% if lesson.is_review is defined and lesson.is_review %}
+  <small class="text-muted">Review</small>
+  {% else %}
+  <small class="text-muted">Lesson {{ lesson_num }} of {{ content_lessons }}</small>
+  {% endif %}
+  <div class="progress mt-1" style="height:6px">
+    {% if lesson.is_review is defined and lesson.is_review %}
+    <div class="progress-bar" style="width:100%"></div>
+    {% else %}
+    <div class="progress-bar" style="width:{{ (lesson_num / content_lessons * 100)|int }}%"></div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="card shadow-sm border-0 p-4">
+  <h4 class="fw-bold mb-2" style="color:#3d6b52">{{ lesson.title }}</h4>
+  <p class="text-muted mb-3" style="font-size:14px; line-height:1.7">{{ lesson.content }}</p>
+
+  {% if lesson.tile_groups is defined %}
+    {% for group in lesson.tile_groups %}
+    <div class="mt-4">
+      <p class="fw-semibold mb-2" style="font-size:13px; color:#3d6b52">{{ group.label }}</p>
+      <div class="tile-tray">
+        {% for tile in group.tiles %}
+        <div class="tile-wrap">
+          <img src="{{ url_for('static', filename='img/tiles/' + tile.img + '.svg.png') }}" class="tile-img">
+          <div class="tile-tooltip">{{ tile.name }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if lesson.meld_groups is defined %}
+    {% for group in lesson.meld_groups %}
+    <div class="mt-4">
+      <p class="fw-semibold mb-2" style="font-size:13px; color:#3d6b52">{{ group.label }}</p>
+      <div class="tile-tray">
+        {% for tile in group.tiles %}
+        <div class="tile-wrap">
+          <img src="{{ url_for('static', filename='img/tiles/' + tile.img + '.svg.png') }}" class="tile-img">
+          <div class="tile-tooltip">{{ tile.name }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if lesson.win_scoring_section is defined %}
+
+    <p class="fw-bold text-uppercase mb-2 mt-2" style="font-size:11px; letter-spacing:1.2px; color:#3d6b52;">Example Hands</p>
+    {% for hand in lesson.hand_examples %}
+    <div class="mb-3 p-3" style="border-radius:10px; border:1.5px solid #e8e2d8; background:#fafaf7;">
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <span class="fw-semibold" style="font-size:13px; color:#3a3530;">{{ hand.label }}</span>
+        <span style="font-size:11px; font-weight:700; border-radius:999px; padding:2px 9px;
+          {% if hand.tai_level == 'high' %}background:#fff4e5; color:#8a5c00; border:1px solid #f0d080;
+          {% else %}background:#f0f6ef; color:#3d6b52; border:1px solid #c0dbc8;{% endif %}">{{ hand.tai_label }}</span>
+      </div>
+      {% if hand.note %}<p class="mb-2" style="font-size:12px; color:#7a7068;">{{ hand.note }}</p>{% endif %}
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        {% for row in hand.rows %}
+        <div class="tile-tray">
+          {% for tile in row %}
+          <div class="tile-wrap">
+            <img src="{{ url_for('static', filename='img/tiles/' + tile.img + '.svg.png') }}" class="tile-img">
+            <div class="tile-tooltip">{{ tile.name }}</div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <p class="fw-bold text-uppercase mb-2 mt-4" style="font-size:11px; letter-spacing:1.2px; color:#3d6b52;">Tai Bonuses</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      {% for b in lesson.tai_bonuses %}
+      <div class="p-3" style="border-radius:10px; border:1.5px solid #e8e2d8; background:#fafaf7;">
+        <span style="font-size:11px; font-weight:700; border-radius:999px; padding:2px 9px;
+          {% if b.level == 'high8' %}background:#fdecd0; color:#7a3d00; border:1px solid #e8a050;
+          {% elif b.level == 'high4' %}background:#fff4e5; color:#8a5c00; border:1px solid #f0d080;
+          {% elif b.level == 'mid' %}background:#eef4ff; color:#3a5fa0; border:1px solid #b0c8f0;
+          {% else %}background:#f0f6ef; color:#3d6b52; border:1px solid #c0dbc8;{% endif %}">{{ b.tai }}</span>
+        <p class="fw-semibold mb-0 mt-1" style="font-size:13px; color:#3a3530;">{{ b.label }}</p>
+        <p class="mb-0" style="font-size:12px; color:#7a7068;">{{ b.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if lesson.scoring_note is defined %}
+    {% set sn = lesson.scoring_note %}
+    <p class="fw-bold text-uppercase mb-1 mt-4" style="font-size:11px; letter-spacing:1.2px; color:#3d6b52;">Payout</p>
+    <div class="p-3 mb-3" style="background:#f0f6ef; border-radius:8px; border:1px solid #c0dbc8; font-size:13px; line-height:1.9; color:#3a3530;">
+      <strong>Formula: Base + (Tai × Per-Tai Amount)</strong><br>
+      The <strong>base</strong> and <strong>per-Tai amount</strong> are agreed in the currency of your choice (e.g. NT$ or US$) before the game starts.<br>
+      <span style="color:#5a5248;">Example — Base = NT$30, Per-Tai = NT$50:</span>
+      <div style="margin-top:6px; display:flex; gap:16px; flex-wrap:wrap;">
+        <span>0 Tai → NT$30</span>
+        <span>1 Tai → NT$80</span>
+        <span>4 Tai → NT$230</span>
+        <span>8 Tai → NT$430</span>
+      </div>
+    </div>
+    <div style="border-radius:10px; border:1.5px solid #e8e2d8; overflow:hidden;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px;">
+        <thead>
+          <tr style="background:#f0f6ef;">
+            <th style="padding:8px 14px; text-align:left; color:#3d6b52; font-weight:600; border-bottom:1px solid #e8e2d8;">Tai</th>
+            <th style="padding:8px 14px; text-align:left; color:#3d6b52; font-weight:600; border-bottom:1px solid #e8e2d8;">Hand Type</th>
+            <th style="padding:8px 14px; text-align:right; color:#3d6b52; font-weight:600; border-bottom:1px solid #e8e2d8;">Payout (NT$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in sn.rows %}
+          <tr style="border-top:1px solid #e8e2d8; {% if row.tai >= 8 %}background:#fffbf0;{% elif row.tai >= 4 %}background:#fafaf7;{% endif %}">
+            <td style="padding:8px 14px; font-weight:700; color:#3a3530;">{{ row.tai }}</td>
+            <td style="padding:8px 14px; color:#3a3530; font-size:12px;">{{ row.label }}</td>
+            <td style="padding:8px 14px; text-align:right; font-weight:700; color:#3a3530;">
+              {{ row.total }}
+              <span style="font-size:11px; color:#9a9088; font-weight:400;"> ({{ row.hint }})</span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-2" style="font-size:11px; color:#7a7068;">{{ sn.note }}</p>
+    {% endif %}
+
+  {% endif %}
+
+  {% if lesson.sections is defined %}
+    {% for section in lesson.sections %}
+    <div class="mt-4">
+      <p class="fw-bold text-uppercase mb-2" style="font-size:11px; letter-spacing:1px; color:#3d6b52">{{ section.heading }}</p>
+      <ul class="list-group list-group-flush">
+        {% for item in section.points %}
+        <li class="list-group-item" style="font-size:14px">{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="d-flex justify-content-between mt-3">
+  {% if lesson_num > 1 %}
+  <a href="/learn/{{ lesson_num - 1 }}" class="btn btn-outline-thirdary">← Back</a>
+  {% else %}
+  <a href="/" class="btn btn-outline-thirdary">← Home</a>
+  {% endif %}
+
+  {% if lesson_num < total_lessons %}
+  <a href="/learn/{{ lesson_num + 1 }}" class="btn btn-main">Next →</a>
+  {% else %}
+  <a href="/practice/1" class="btn btn-main">Start Practice →</a>
+  {% endif %}
+</div>
+
+{% endblock %}
