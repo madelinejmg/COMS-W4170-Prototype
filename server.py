@@ -27,6 +27,21 @@ def save_user_data(data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
+def _elapsed(user_data):
+    started = user_data.get('started_at')
+    if not started:
+        return None
+    try:
+        start_time = datetime.fromisoformat(started)
+        delta = datetime.now() - start_time
+        total_seconds = int(delta.total_seconds())
+        minutes = total_seconds // 60
+        seconds = total_seconds % 60
+        return f"{minutes}m {seconds}s"
+    except:
+        return None
+
+
 @app.route('/')
 def home():
     user_data = {'started_at': None, 'lesson_visits': {}, 'practice_answers': {}, 'quiz_answers': {}}
@@ -190,7 +205,8 @@ def results():
         })
 
     return render_template('results.html', score=score, total=total,
-                           answered=len(answers), results=result_rows)
+                           answered=len(answers), results=result_rows,
+                           elapsed=_elapsed(user_data))
 
 if __name__ == '__main__':
     app.run(debug=True)
