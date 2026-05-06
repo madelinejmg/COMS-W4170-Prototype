@@ -5,7 +5,7 @@
          style="max-width: 400px; border-radius: 15px;">
 </p>
 
-# COMS-W4170 Final Project
+# COMS-W4170: User Interface Design Final Project
 A fast-paced, social tile game played by four players that combines strategy, memory, and a bit of luck. Each player starts with 16 tiles and takes turns drawing and discarding to form a winning hand made of sets and a pair. Learn the tiles, melds, scoring in under 10 minutes!
 
 # Students
