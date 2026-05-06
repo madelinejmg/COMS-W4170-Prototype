@@ -7,7 +7,11 @@
   <div style="font-size:72px; font-weight:700; color:#3d6b52; line-height:1">
     {{ score }}<span style="font-size:28px; opacity:0.4">/{{ total }}</span>
   </div>
-  <p class="text-muted mb-3">questions correct</p>
+  <p class="text-muted mb-3">Questions correct</p>
+
+  {% if elapsed %}
+  <p class="text-muted mb-3" style="font-size:14px">⏱ Completed in {{ elapsed or "0m 0s"}}</p>
+  {% endif %}
 
   {% if score == total %}
     <p class="fs-5 fst-italic" style="color:#3d6b52">Perfect score!</p>

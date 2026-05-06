@@ -2,15 +2,15 @@
   {
     "id": 1,
     "type": "mcq",
-    "question": "How many sets (Pongs/Kongs/Chows) does a standard Taiwanese Mahjong winning hand require, plus how many pairs?",
+    "question": "How many melds and pairs does a standard Taiwanese Mahjong winning hand require?",
     "options": [
-      "4 sets + 1 pair",
-      "5 sets + 1 pair",
-      "5 sets + 2 pairs",
-      "3 sets + 1 pair"
+      "4 melds + 1 pair (15 tiles)",
+      "5 melds + 1 pair (17 tiles)",
+      "5 melds + 2 pairs (19 tiles)",
+      "3 melds + 1 pair (11 tiles)"
     ],
     "answer": 1,
-    "explanation": "Taiwanese Mahjong requires 5 sets + 1 pair. This is different from other regional variants that may use 4 sets."
+    "explanation": "A winning hand (Hu) in Taiwanese Mahjong requires 5 melds + 1 pair = 17 tiles total (5×3 + 2). You hold 16 tiles, and the 17th — either drawn or claimed — completes the hand."
   },
   {
     "id": 2,
@@ -34,7 +34,7 @@
       "Eyes"
     ],
     "answer": 1,
-    "explanation": "Three identical tiles = Pong. A Chow needs three consecutive numbers; a Kong needs four identical tiles."
+    "explanation": "Three identical tiles = Pong. A Chow needs three consecutive numbers in the same suit; a Kong needs four identical tiles."
   },
   {
     "id": 3,
@@ -58,7 +58,7 @@
       "Flower Bonus"
     ],
     "answer": 1,
-    "explanation": "Three consecutive tiles of the same suit = Chow. 1-2-3 Characters is a valid sequence."
+    "explanation": "Three consecutive tiles of the same suit = Chow. 1-2-3 Characters is a valid sequence. Chow can only be made from numbered suits (Bamboo, Circles, Characters)."
   },
   {
     "id": 4,
@@ -82,52 +82,52 @@
       "Only if all four winds are used"
     ],
     "answer": 1,
-    "explanation": "Wind and Dragon tiles cannot form Chow sequences — only Pongs and Kongs."
+    "explanation": "Wind and Dragon tiles cannot form Chow sequences — they can only be used in Pongs or Kongs."
   },
   {
     "id": 5,
     "type": "mcq",
-    "question": "Your winning hand has All Triplets + Self-Draw + Concealed Hand. How many Tai total?",
+    "question": "You win by drawing the last tile yourself, without having claimed any discards all game. How many Tai is that?",
     "options": [
-      "4 Tai",
-      "5 Tai",
-      "6 Tai",
-      "7 Tai"
+      "1 Tai (Self-Draw only)",
+      "2 Tai (Self-Draw + Concealed Hand)",
+      "3 Tai (Concealed Self-Draw)",
+      "4 Tai"
     ],
     "answer": 2,
-    "explanation": "All Triplets (+4) + Self-Draw (+1) + Concealed Hand (+1) = 6 Tai. These three bonuses all stack together."
+    "explanation": "Concealed Self-Draw is its own combined bonus worth +3 Tai — not just Self-Draw + Concealed added separately. It means: no claimed discards all game, AND you draw the winning tile yourself."
   },
   {
     "id": 6,
     "type": "mcq",
-    "question": "Which hand earns more Tai?",
+    "question": "How many Tai does a Full Flush earn?",
     "options": [
-      "Full Flush — one suit only, no honor tiles",
-      "Mixed Flush — one suit plus honor tiles",
-      "They earn the same Tai",
-      "Neither earns any Tai"
+      "+4 Tai",
+      "+8 Tai",
+      "+6 Tai",
+      "+2 Tai"
     ],
-    "answer": 0,
-    "explanation": "Full Flush earns +4 Tai, while Mixed Flush earns only +2 Tai. Pure one-suit hands are worth double!"
+    "answer": 1,
+    "explanation": "Full Flush (all tiles from one suit, no honor tiles) earns +8 Tai — one of the highest single bonuses in Taiwanese Mahjong."
   },
   {
     "id": 7,
     "type": "mcq",
-    "question": "You won by claiming a discard from another player, and your hand contains a Chow. Which bonus applies?",
+    "question": "You won by claiming a discard from another player. Which bonus applies?",
     "options": [
-      "Concealed Hand",
-      "Self-Draw",
+      "Concealed Hand (+1 Tai)",
+      "Self-Draw (+1 Tai)",
       "Neither bonus applies",
       "Both bonuses apply"
     ],
     "answer": 2,
-    "explanation": "Concealed Hand requires no claimed tiles at all. Self-Draw requires drawing the winning tile yourself. Claiming a discard with a Chow earns neither bonus."
+    "explanation": "Concealed Hand requires no claimed tiles at all. Self-Draw requires drawing the winning tile yourself from the wall. Claiming a discard to win earns neither bonus."
   },
   {
     "id": 8,
     "type": "tile_select",
     "question": "You drew your 17th tile. Which tile should you discard?",
-    "description": "You have 4 complete melds and a pair. The tile you drew connects with one tile in your hand — figure out which tile no longer belongs.",
+    "description": "You have 4 complete melds and a pair. The tile you just drew connects with one tile in your hand — figure out which tile no longer belongs.",
     "tiles": [
       {
         "symbol": "MJw1-",
@@ -200,6 +200,6 @@
       }
     ],
     "answer": 13,
-    "explanation": "6 Bamboo pairs up with 7 Bamboo, so keep them! 3 Circle has no partner and doesn't fit any meld — discard it."
+    "explanation": "6 Bamboo pairs with 7 Bamboo — keep them! 3 Circle has no partner and doesn't fit any meld. Discard it."
   }
 ]

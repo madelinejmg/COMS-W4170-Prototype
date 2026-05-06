@@ -1,32 +1,70 @@
 [
   {
     "id": 1,
-    "question": "What type of set is this?",
-    "description": "Three identical Bamboo 7 tiles are shown.",
-    "tiles": ["MJs7-","MJs7-","MJs7-"],
-    "options": ["Chow", "Pong", "Kong"],
+    "question": "What type of meld is this?",
+    "description": "Three identical Bamboo 7 tiles. A meld is a set of tiles that counts toward your winning hand.",
+    "tiles": [
+      "MJs7-",
+      "MJs7-",
+      "MJs7-"
+    ],
+    "options": [
+      "Chow",
+      "Pong",
+      "Kong"
+    ],
     "correct": 1,
-    "explanation": "This is a Pong — a set of 3 identical tiles. Not a Kong (which needs 4 identical tiles), and not a Chow (which needs 3 consecutive numbers).",
-    "review_lesson": 3
+    "explanation": "This is a Pong — 3 identical tiles. A Kong needs 4 identical tiles. A Chow needs 3 consecutive numbers in the same suit.",
+    "review_lesson": 2
   },
   {
     "id": 2,
-    "question": "What tile completes the winning hand?",
-    "description": "Your hand has 5 complete melds. You need one more tile to form a pair (Eyes). You already have one 1-Circle tile.",
-    "tiles": ["MJd2-","MJd2-","MJd2-","MJw5-","MJw5-","MJw5-","MJt1-","MJt2-","MJt3-","MJt4-","MJt5-","MJt6-","MJt7-","MJt1-"],
-    "options": ["6 Circles", "4 Circles", "1 Circle"],
+    "question": "What tile completes this winning hand?",
+    "description": "This hand has 5 complete melds (15 tiles) and one 1-Circle tile. A winning hand = 5 melds + 1 pair. What tile completes the pair?",
+    "tiles": [
+      "MJd2-",
+      "MJd2-",
+      "MJd2-",
+      "MJw5-",
+      "MJw5-",
+      "MJw5-",
+      "MJt1-",
+      "MJt2-",
+      "MJt3-",
+      "MJt4-",
+      "MJt5-",
+      "MJt6-",
+      "MJs1-",
+      "MJs2-",
+      "MJs3-",
+      "MJt1-"
+    ],
+    "options": [
+      "6 Circles",
+      "4 Circles",
+      "1 Circle"
+    ],
     "correct": 2,
-    "explanation": "You already have 5 complete melds. To win (Hu), you just need a pair (Eyes). You have one 1-Circle tile, so adding another 1-Circle completes your Eyes and finishes the winning hand.",
-    "review_lesson": 4
+    "explanation": "You have 5 complete melds already. To win (Hu), you need 5 melds + 1 pair (17 tiles). You have one 1-Circle, so drawing another 1-Circle completes your pair and wins the hand.",
+    "review_lesson": 3
   },
   {
     "id": 3,
     "question": "What's your best move?",
-    "description": "The player ahead of you discarded a 5-Character tile. You already have three 5-Character tiles in your hand.",
-    "tiles": ["MJw5-","MJw5-","MJw5-","MJw5-"],
-    "options": ["Kong", "Pong", "Chow"],
+    "description": "The player ahead discarded a 5-Character. You already have three 5-Character tiles in your hand.",
+    "tiles": [
+      "MJw5-",
+      "MJw5-",
+      "MJw5-",
+      "MJw5-"
+    ],
+    "options": [
+      "Kong",
+      "Pong",
+      "Chow"
+    ],
     "correct": 0,
-    "explanation": "You already have three 5-Character tiles. Claiming the fourth makes a Kong (4 identical tiles). Not a Pong (you'd need exactly 3, but you already have 3 + the discard = 4). Not a Chow (that requires consecutive numbers).",
-    "review_lesson": 3
+    "explanation": "You have 3 tiles already — adding the discarded 4th makes a Kong (4 identical tiles). You can't Pong because that's only 3. You can't Chow because 5-Character has no consecutive partners shown here.",
+    "review_lesson": 2
   }
 ]
