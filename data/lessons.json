@@ -289,7 +289,7 @@
         "label": "Basic Hand",
         "tai_label": "0 Tai — base payout only",
         "tai_level": "neutral",
-        "note": "5 melds (Pong/Chow/Kong) + 1 pair = 17 tiles. Discarder pays all three players. On Self-Draw, all three opponents each pay you.",
+        "note": "5 melds (Pong/Chow/Kong) + 1 pair = 17 tiles. Discarder pays the wineer. On Self-Draw, all three opponents each pay you.",
         "rows": [
           [
             {
@@ -805,7 +805,7 @@
         "points": [
           "5 melds + 1 pair (Eyes) = 17 tiles total",
           "Ready Hand = one tile away from winning",
-          "Plain Hu (0 Tai): discarder pays all three players the base amount",
+          "Plain Hu (0 Tai): discarder pays the winner the base amount",
           "Self-Draw: all three opponents each pay the winner the full amount"
         ]
       },

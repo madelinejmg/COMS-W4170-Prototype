@@ -20,7 +20,7 @@
   {
     "id": 2,
     "question": "What tile completes this winning hand?",
-    "description": "This hand has 5 complete melds (15 tiles) and one lone 1-Circle tile. A winning hand = 5 melds + 1 pair. What tile completes the pair?",
+    "description": "This hand has 5 complete melds (15 tiles) and one 1-Circle tile. A winning hand = 5 melds + 1 pair. What tile completes the pair?",
     "tiles": [
       "MJd2-",
       "MJd2-",

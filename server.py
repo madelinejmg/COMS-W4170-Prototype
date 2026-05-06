@@ -27,6 +27,20 @@ def save_user_data(data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
+def _elapsed(user_data):
+    started = user_data.get('started_at')
+    if not started:
+        return None
+    try:
+        start_time = datetime.fromisoformat(started)
+        delta = datetime.now() - start_time
+        total_seconds = int(delta.total_seconds())
+        minutes = total_seconds // 60
+        seconds = total_seconds % 60
+        return f"{minutes}m {seconds}s"
+    except:
+        return None
+
 @app.route('/')
 def home():
     user_data = {'started_at': None, 'lesson_visits': {}, 'practice_answers': {}, 'quiz_answers': {}}
@@ -126,7 +140,7 @@ def quiz(question_num):
             save_user_data(user_data)
 
             return render_template('quiz.html', q=q, question_num=question_num, total=total,
-                                   submitted_answer=answer, is_correct=is_correct, show_feedback=True)
+                                   submitted_answer=answer, is_correct=is_correct, show_feedback=True, elapsed=_elapsed(user_data))
 
         if question_num < total:
             return redirect(url_for('quiz', question_num=question_num + 1))
@@ -134,7 +148,7 @@ def quiz(question_num):
 
     previous = answers.get(str(question_num), {}).get('selected')
     return render_template('quiz.html', q=q, question_num=question_num, total=total,
-                           submitted_answer=previous, is_correct=None, show_feedback=False)
+                           submitted_answer=previous, is_correct=None, show_feedback=False, elapsed=_elapsed(user_data))
 
 
 @app.route('/resume')
@@ -190,7 +204,8 @@ def results():
         })
 
     return render_template('results.html', score=score, total=total,
-                           answered=len(answers), results=result_rows)
+                           answered=len(answers), results=result_rows,
+                           elapsed=_elapsed(user_data))
 
 if __name__ == '__main__':
     app.run(debug=True)
