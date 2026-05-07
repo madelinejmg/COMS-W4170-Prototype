@@ -9,9 +9,7 @@
   </div>
   <p class="text-muted mb-3">Questions correct</p>
 
-  {% if elapsed %}
-  <p class="text-muted mb-3" style="font-size:14px">⏱ Completed in {{ elapsed or "0m 0s"}}</p>
-  {% endif %}
+  <p class="text-muted mb-3" style="font-size:14px">⏱ Completed in {{ elapsed or "N/A" }}</p>
 
   {% if score == total %}
     <p class="fs-5 fst-italic" style="color:#3d6b52">Perfect score!</p>

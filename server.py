@@ -29,22 +29,21 @@ def save_user_data(data):
 
 def _elapsed(user_data):
     started = user_data.get('started_at')
-    if not started:
+    if not started or started == 'null':
         return None
     try:
-        start_time = datetime.fromisoformat(started)
+        start_time = datetime.fromisoformat(str(started))
         delta = datetime.now() - start_time
         total_seconds = int(delta.total_seconds())
         minutes = total_seconds // 60
         seconds = total_seconds % 60
         return f"{minutes}m {seconds}s"
-    except:
+    except Exception as e:
+        app.logger.warning(f"_elapsed error: {e}, started={started!r}")
         return None
 
 @app.route('/')
 def home():
-    user_data = {'started_at': None, 'lesson_visits': {}, 'practice_answers': {}, 'quiz_answers': {}}
-    save_user_data(user_data)
     return render_template('home.html')
 
 
