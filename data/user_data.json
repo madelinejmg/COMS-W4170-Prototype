@@ -1,6 +1,49 @@
 {
-  "started_at": null,
-  "lesson_visits": {},
+  "started_at": "2026-05-07T11:02:23.605238",
+  "lesson_visits": {
+    "1": "2026-05-07T11:02:23.625003"
+  },
   "practice_answers": {},
-  "quiz_answers": {}
+  "quiz_answers": {
+    "1": {
+      "selected": "3",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:26.632984"
+    },
+    "2": {
+      "selected": "2",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:28.758568"
+    },
+    "3": {
+      "selected": "3",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:30.430416"
+    },
+    "4": {
+      "selected": "3",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:32.380367"
+    },
+    "5": {
+      "selected": "3",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:34.290951"
+    },
+    "6": {
+      "selected": "3",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:36.131461"
+    },
+    "7": {
+      "selected": "3",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:37.787367"
+    },
+    "8": {
+      "selected": "10",
+      "is_correct": false,
+      "time": "2026-05-07T11:02:39.802963"
+    }
+  }
 }
