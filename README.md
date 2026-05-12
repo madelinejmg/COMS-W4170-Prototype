@@ -8,7 +8,7 @@
 # COMS-W4170: User Interface Design Final Project
 A fast-paced, social tile game played by four players that combines strategy, memory, and a bit of luck. Each player starts with 16 tiles and takes turns drawing and discarding to form a winning hand made of sets and a pair. Learn the tiles, melds, scoring in under 10 minutes!
 
-# Students
-- Emily Chang (ejc2231)
-- Madeline Maldonado Gutierrez (mjm2418)
-- Clark Chen (fc2861)
+# Team Members
+- Emily Chang (ejc2231) - emilyjwc
+- Madeline Maldonado Gutierrez (mjm2418) - madelinejmg
+- Clark Chen (fc2861) - ccf1519
